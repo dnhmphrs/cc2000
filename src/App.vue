@@ -1,28 +1,68 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <img class="background" src="@/assets/computer.jpg" >
+    <Navbar></Navbar>
+    <div>
+      <router-view class="app"></router-view>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Navbar from './components/Navbar';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Navbar
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 110%;
+}
+
+body, button{
+  font-family: "europa-regular", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  /*font-size: 16px;*/
+  line-height: initial;
+  color: @textColour;
+  opacity: 1;
+
+  background-color: @bgColour;
+  box-sizing: border-box;
+}
+
+@media only screen and (max-width: 1365px) {
+  html {
+    font-size: 110%;
+  }
+}
+
+</style>
+
+<style scoped>
+.background {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  z-index: -10;
+}
+
+.app {
+  z-index: 1000;
 }
 </style>
