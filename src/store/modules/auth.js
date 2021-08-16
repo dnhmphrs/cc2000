@@ -3,23 +3,23 @@
 
 const state = {
   dummy: true
-};
+}
 
 const getters = {
   isTrue: state => !!state.dummy
-};
+}
 
 const actions = {
-  dummyMethod({commit},value) {
-    commit('setDummy',value);
+  dummyMethod ({commit},value) {
+    commit('setDummy',value)
   }
-};
+}
 
 const mutations = {
-  setDummy(state,value) {
-    state.dummy = value;
+  setDummy (state,value) {
+    state.dummy = value
   }
-};
+}
 
 export default {
   state,

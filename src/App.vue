@@ -1,22 +1,21 @@
 <template>
   <div>
-    <img class="background" src="@/assets/computer.jpg" >
-    <Navbar></Navbar>
+    <navbar />
     <div>
-      <router-view class="app"></router-view>
+      <router-view class="app" />
     </div>
   </div>
 </template>
 
 <script>
-import Navbar from './components/Navbar';
+  import Navbar from './components/Navbar'
 
-export default {
-  name: 'App',
-  components: {
-    Navbar
+  export default {
+    name: 'App',
+    components: {
+      Navbar
+    }
   }
-};
 </script>
 
 <style>
@@ -34,15 +33,11 @@ html {
 }
 
 body, button{
-  font-family: "europa-regular", sans-serif;
-  font-weight: 700;
-  font-style: italic;
+  font-family: "roboto-mono", sans-serif;
+  font-weight: 300;
+  font-style: normal;
   /*font-size: 16px;*/
   line-height: initial;
-  color: @textColour;
-  opacity: 1;
-
-  background-color: @bgColour;
   box-sizing: border-box;
 }
 
