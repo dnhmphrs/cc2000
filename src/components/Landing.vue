@@ -78,4 +78,16 @@
   width: 40%;
   padding-top: 2rem;
 }
+
+@media only screen and (max-width: 1365px) {
+  .landing {
+  width: 100%;
+  padding: 2rem;
+  }
+
+  .logo {
+  width: 60%;
+  padding-top: 2rem;
+}
+}
 </style>
