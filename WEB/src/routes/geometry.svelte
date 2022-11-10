@@ -30,6 +30,7 @@
 	flyControls.movementSpeed = 100;
 	flyControls.rollSpeed = 0.5;
 	flyControls.autoForward = true;
+	flyControls.update(0.001);
 
 	{
 		const color = 0x0033bb;
@@ -77,12 +78,10 @@
 	group.rotation.y += Math.PI / 2;
 
 	let step = 0;
-	flyControls.update(0.001);
 
 	let render = function () {
 		renderer.render(scene, camera);
 		id = requestAnimationFrame(render);
-
 		flyControls.update(0.001);
 
 		if (camera.position.z <= -20) {
