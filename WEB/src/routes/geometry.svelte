@@ -1,6 +1,7 @@
 <script>
 	import { onMount, onDestroy } from 'svelte';
 	import { FlyControls } from 'three/examples/jsm/controls/FlyControls';
+	import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 	import * as THREE from 'three';
 
 	let container, pc, id;
@@ -15,6 +16,8 @@
 	// Setting up a camera
 	let camera = new THREE.PerspectiveCamera(30, width / height, 0.1, 400);
 	camera.position.z = 160;
+
+	let sperm;
 
 	// Setting up the renderer. This will be called later to render scene with the camera setup above
 	let renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -45,12 +48,40 @@
 	// ---------------------------------------------------------------------------
 
 	const sphereGeometry = new THREE.SphereGeometry(10, 32, 16);
-	const material = new THREE.MeshToonMaterial({ color: 0xffffff });
+	const material = new THREE.MeshToonMaterial({ color: 0xfafafa });
 	const sphere = new THREE.Mesh(sphereGeometry, material);
 	scene.add(sphere);
 
-	const light = new THREE.HemisphereLight(0xfafafa, 0x0033bb, 1);
+	const light = new THREE.HemisphereLight(0xf0f0f0, 0x0033bb, 1);
 	scene.add(light);
+
+	// ---------------------------------------------------------------------------
+
+	const gltfLoader = new GLTFLoader();
+
+	let spermGroup = new THREE.Group();
+	gltfLoader.load('/sperm.glb', (glb) => {
+		sperm = glb.scene.children[0];
+
+		sperm.scale.set(0.1, 0.1, 0.1);
+		// sperm.position.z = 100;
+		sperm.rotation.x += Math.PI;
+		sperm.position.y -= 1;
+		sperm.position.z += 2;
+
+		sperm.material = material;
+
+		// let bun2 = bun.clone();
+		// bun2.material = new THREE.MeshBasicMaterial({
+		// 	color: 0x141414,
+		// 	wireframe: true
+		// });
+		// bun2.scale.set(8.03, 8.03, 8.03);
+
+		spermGroup.add(sperm);
+	});
+
+	scene.add(spermGroup);
 
 	// ---------------------------------------------------------------------------
 
@@ -87,8 +118,17 @@
 		renderer.render(scene, camera);
 		id = requestAnimationFrame(render);
 		flyControls.update(0.001);
+		spermGroup.position.z = camera.position.z;
+		spermGroup.position.x = camera.position.x;
+		spermGroup.position.y = camera.position.y;
 
-		if (camera.position.z <= -20) {
+		spermGroup.rotation.z = camera.rotation.z;
+		spermGroup.rotation.x = camera.rotation.x;
+		spermGroup.rotation.y = camera.rotation.y;
+
+		spermGroup.position.z -= 2;
+
+		if (camera.position.z <= 10) {
 			camera.position.z = 160;
 			camera.position.y = 0;
 			camera.position.x = 0;
