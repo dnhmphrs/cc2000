@@ -99,6 +99,7 @@ a:hover {
 	text-align: justify;
 	text-justify: inter-word;
 	text-align-last: justify;
+	margin-left: auto;
 }
 
 .centreButton:hover {
