@@ -114,8 +114,8 @@ a:hover {
 
 	user-select: none;
 
-	display: inline-block;
 	text-align: justify;
+	text-justify: inter-word;
 	text-align-last: justify;
 }
 
