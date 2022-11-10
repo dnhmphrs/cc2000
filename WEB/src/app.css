@@ -109,7 +109,7 @@ a:hover {
 	border: solid 1px var(--white);
 	padding: 0 5px;
 	color: var(--white);
-	max-width: 100%;
+	min-width: 290px;
 
 	user-select: none;
 
@@ -132,17 +132,7 @@ a:hover {
 }
 
 @media (max-width: 800px) {
-	body {
-		padding: 0 2rem;
-		margin: 0;
-	}
-
 	a {
 		color: var(--black);
-	}
-
-	.centreButton {
-		text-align: justify;
-		text-align-last: justify;
 	}
 }
