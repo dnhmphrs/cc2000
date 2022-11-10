@@ -13,7 +13,7 @@
 	let width = window.innerWidth;
 
 	// Setting up a camera
-	let camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 400);
+	let camera = new THREE.PerspectiveCamera(30, width / height, 0.1, 400);
 	camera.position.z = 160;
 
 	// Setting up the renderer. This will be called later to render scene with the camera setup above

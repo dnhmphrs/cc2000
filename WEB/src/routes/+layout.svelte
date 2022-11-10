@@ -46,13 +46,15 @@
 
 <svelte:component this={Geometry} />
 
-{#if $screenType == 3}
-	<main>
-		<slot />
-	</main>
-{:else}
-	<p class="centreButton alt">wip, use desktop</p>
-{/if}
+{#key $screenType}
+	{#if $screenType == 3}
+		<main>
+			<slot />
+		</main>
+	{:else}
+		<p class="centreButton alt">wip, use desktop</p>
+	{/if}
+{/key}
 
 <style>
 	main {
