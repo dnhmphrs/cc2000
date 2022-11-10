@@ -11,7 +11,9 @@
 </svelte:head>
 
 <section>
-	<p href="/" class="centreButton alt" on:click={() => toggle()}>conception calculator 2000</p>
+	<p class="centreButton alt">
+		conception calculator 2000<br />coming soon
+	</p>
 	<p class="hint">use arrow keys to swim</p>
 </section>
 

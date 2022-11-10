@@ -51,7 +51,7 @@
 		<slot />
 	</main>
 {:else}
-	<p>wip, use desktop</p>
+	<p class="centreButton alt">wip, use desktop</p>
 {/if}
 
 <style>

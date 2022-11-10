@@ -112,6 +112,10 @@ a:hover {
 	max-width: 100%;
 
 	user-select: none;
+
+	display: inline-block;
+	text-align: justify;
+	text-align-last: justify;
 }
 
 .centreButton:hover {
