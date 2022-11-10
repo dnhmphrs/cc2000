@@ -110,6 +110,7 @@ a:hover {
 	padding: 0 5px;
 	color: var(--white);
 	min-width: 280px;
+	max-width: 280px;
 
 	user-select: none;
 
