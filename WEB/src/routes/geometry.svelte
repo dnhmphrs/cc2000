@@ -28,7 +28,7 @@
 		container.appendChild(renderer.domElement);
 
 		setTimeout(() => {
-			window.dispatchEvent(new KeyboardEvent('keydown', { key: 'a' }));
+			window.dispatchEvent(new KeyboardEvent('keydown', { key: 's' }));
 		}, '2000');
 	});
 
