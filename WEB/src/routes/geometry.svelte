@@ -77,6 +77,7 @@
 	group.rotation.y += Math.PI / 2;
 
 	let step = 0;
+	flyControls.update(0.001);
 
 	let render = function () {
 		renderer.render(scene, camera);
@@ -86,6 +87,9 @@
 
 		if (camera.position.z <= -20) {
 			camera.position.z = 160;
+			camera.position.y = 0;
+			camera.position.x = 0;
+			camera.lookAt(0, 0, 0);
 		}
 
 		//Varying the points on each frame
@@ -95,7 +99,7 @@
 		let b = 3.4 + Math.random() * 8;
 		let f = 9.9 + Math.random() * 9;
 		let g = 1 + Math.random();
-		let t = 0.0005;
+		let t = 0.0004;
 
 		// geometry.vertices.forEach(function (v) {
 		// 	v.x = v.x - t * a * v.x + t * v.y * v.y - t * v.z * v.z + t * a * f;

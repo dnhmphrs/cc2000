@@ -7,11 +7,12 @@
 </script>
 
 <svelte:head>
-	<title>AUFBAU WEB STUDIO</title>
+	<title>CONCEPTION CALCULATOR 2000</title>
 </svelte:head>
 
 <section>
 	<p href="/" class="centreButton alt" on:click={() => toggle()}>conception calculator 2000</p>
+	<p class="hint">use arrow keys to swim</p>
 </section>
 
 <style>
@@ -20,5 +21,10 @@
 		display: flex;
 		overflow: auto;
 		max-width: 800px;
+	}
+
+	.hint {
+		align-self: flex-end;
+		padding: 16px;
 	}
 </style>
