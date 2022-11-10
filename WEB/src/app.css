@@ -107,7 +107,7 @@ a:hover {
 	opacity: 1;
 	background: var(--black);
 	border: solid 1px var(--white);
-	padding: 0 6px;
+	padding: 0 5px;
 	color: var(--white);
 	max-width: 100%;
 
