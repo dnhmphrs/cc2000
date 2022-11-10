@@ -1,9 +1,5 @@
 <script>
-	import { active } from '$lib/store/store';
-
-	let toggle = () => {
-		active.update((val) => !val);
-	};
+	import { screenType } from '$lib/store/store';
 </script>
 
 <svelte:head>
@@ -14,7 +10,9 @@
 	<p class="centreButton alt">
 		conception calculator 2000<br />coming soon
 	</p>
-	<p class="hint">use arrow keys to swim</p>
+	{#if $screenType == 3}
+		<p class="hint">use arrow keys to swim</p>
+	{/if}
 </section>
 
 <style>

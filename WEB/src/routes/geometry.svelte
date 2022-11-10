@@ -23,6 +23,10 @@
 	renderer.setClearColor(0x0033bb, 1);
 	onMount(() => {
 		container.appendChild(renderer.domElement);
+
+		setTimeout(() => {
+			window.dispatchEvent(new KeyboardEvent('keydown', { key: 'a' }));
+		}, '2000');
 	});
 
 	let flyControls = new FlyControls(camera, renderer.domElement);
