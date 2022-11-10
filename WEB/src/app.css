@@ -140,4 +140,9 @@ a:hover {
 	a {
 		color: var(--black);
 	}
+
+	.centreButton {
+		text-align: justify;
+		text-align-last: justify;
+	}
 }
