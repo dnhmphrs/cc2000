@@ -109,7 +109,7 @@ a:hover {
 	border: solid 1px var(--white);
 	padding: 0 5px;
 	color: var(--white);
-	min-width: 290px;
+	min-width: 280px;
 
 	user-select: none;
 
