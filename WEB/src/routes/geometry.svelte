@@ -14,13 +14,13 @@
 	let width = window.innerWidth;
 
 	// Setting up a camera
-	let camera = new THREE.PerspectiveCamera(30, width / height, 0.1, 400);
+	let camera = new THREE.PerspectiveCamera(25, width / height, 0.01, 400);
 	camera.position.z = 160;
 
 	let sperm;
 
 	// Setting up the renderer. This will be called later to render scene with the camera setup above
-	let renderer = new THREE.WebGLRenderer({ antialias: true });
+	let renderer = new THREE.WebGLRenderer({ antialias: false });
 	renderer.setPixelRatio(window.devicePixelRatio);
 	renderer.setSize(width, height);
 	renderer.setClearColor(0x0033bb, 1);
@@ -35,24 +35,24 @@
 	let flyControls = new FlyControls(camera, renderer.domElement);
 	flyControls.dragToLook = true;
 	flyControls.movementSpeed = 100;
-	flyControls.rollSpeed = 0.75;
+	flyControls.rollSpeed = 0.05;
 	flyControls.autoForward = true;
 	flyControls.update(0.001);
 
 	{
 		const color = 0x0033bb;
-		const density = 0.0165;
+		const density = 0.02;
 		scene.fog = new THREE.FogExp2(color, density);
 	}
 
 	// ---------------------------------------------------------------------------
 
 	const sphereGeometry = new THREE.SphereGeometry(10, 32, 16);
-	const material = new THREE.MeshToonMaterial({ color: 0xfafafa });
+	const material = new THREE.MeshToonMaterial({ color: 0xf9d6ff });
 	const sphere = new THREE.Mesh(sphereGeometry, material);
 	scene.add(sphere);
 
-	const light = new THREE.HemisphereLight(0xf0f0f0, 0x0033bb, 1);
+	const light = new THREE.HemisphereLight(0xf0f0f0, 0x0033bb, 2);
 	scene.add(light);
 
 	// ---------------------------------------------------------------------------
@@ -63,13 +63,17 @@
 	gltfLoader.load('/sperm.glb', (glb) => {
 		sperm = glb.scene.children[0];
 
-		sperm.scale.set(0.1, 0.1, 0.1);
+		console.log(sperm);
+
+		sperm.scale.set(1, 1, 1);
 		// sperm.position.z = 100;
 		sperm.rotation.x += Math.PI;
-		sperm.position.y -= 1.2;
-		sperm.position.z += 2;
+		sperm.position.y -= 0.71;
+		sperm.position.z += 4;
 
-		sperm.material = material;
+		sperm.scale.set(0.5, 0.5, 0.5);
+
+		// sperm.material = material;
 
 		// let bun2 = bun.clone();
 		// bun2.material = new THREE.MeshBasicMaterial({
@@ -115,13 +119,13 @@
 	let step = 0;
 
 	let followCamera = () => {
-		spermGroup.position.z = camera.position.z;
+		spermGroup.position.z = camera.position.z - 6;
 		spermGroup.position.x = camera.position.x;
-		spermGroup.position.y = camera.position.y;
+		spermGroup.position.y = camera.position.y - 0.14;
 
-		spermGroup.rotation.z = camera.rotation.z;
+		spermGroup.rotation.z += camera.rotation.z;
 		spermGroup.rotation.x = camera.rotation.x;
-		spermGroup.rotation.y = camera.rotation.y;
+		spermGroup.rotation.y = -camera.rotation.y;
 	};
 
 	let render = function () {
@@ -137,9 +141,11 @@
 			camera.lookAt(0, 0, 0);
 		}
 
+		spermGroup.rotation.z += 0.08;
+
 		followCamera();
 
-		spermGroup.position.z -= 2;
+		// spermGroup.position.z -= 3;
 
 		if (camera.position.z >= 130) {
 			camera.fov = 160 - camera.position.z;
@@ -147,7 +153,7 @@
 		}
 
 		// this block fixes a bug where the sperm is brielfy visible after entering the
-		if (camera.position.z <= 11) {
+		if (camera.position.z <= 10.5) {
 			spermGroup.position.z = -160;
 		}
 
