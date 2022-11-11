@@ -126,7 +126,7 @@
 		spermGroup.rotation.x = camera.rotation.x;
 		spermGroup.rotation.y = camera.rotation.y;
 
-		spermGroup.position.z -= 1;
+		spermGroup.position.z -= 2;
 
 		if (camera.position.z >= 130) {
 			camera.fov = 160 - camera.position.z;
