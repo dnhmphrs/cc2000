@@ -35,7 +35,7 @@
 	let flyControls = new FlyControls(camera, renderer.domElement);
 	flyControls.dragToLook = true;
 	flyControls.movementSpeed = 100;
-	flyControls.rollSpeed = 0.5;
+	flyControls.rollSpeed = 0.75;
 	flyControls.autoForward = true;
 	flyControls.update(0.001);
 
