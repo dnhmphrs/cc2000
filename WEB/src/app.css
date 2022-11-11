@@ -99,7 +99,14 @@ a:hover {
 	text-align: justify;
 	text-justify: inter-word;
 	text-align-last: justify;
-	margin-left: auto;
+
+	height: 3.2rem;
+}
+
+.centreButton:after {
+	content: '';
+	display: inline-block;
+	width: 100%;
 }
 
 .centreButton:hover {
