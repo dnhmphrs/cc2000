@@ -66,7 +66,7 @@
 		sperm.scale.set(0.1, 0.1, 0.1);
 		// sperm.position.z = 100;
 		sperm.rotation.x += Math.PI;
-		sperm.position.y -= 1;
+		sperm.position.y -= 1.2;
 		sperm.position.z += 2;
 
 		sperm.material = material;
