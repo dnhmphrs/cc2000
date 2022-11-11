@@ -129,6 +129,14 @@
 		id = requestAnimationFrame(render);
 		flyControls.update(0.001);
 
+		if (camera.position.z <= 10) {
+			camera.position.z = 160;
+			camera.position.y = 0;
+			camera.position.x = 0;
+
+			camera.lookAt(0, 0, 0);
+		}
+
 		followCamera();
 
 		spermGroup.position.z -= 2;
@@ -136,19 +144,6 @@
 		if (camera.position.z >= 130) {
 			camera.fov = 160 - camera.position.z;
 			camera.updateProjectionMatrix();
-		}
-
-		// this block fixes a bug where the sperm is brielfy visible after entering the egg
-		if (camera.position.z <= 11) {
-			spermGroup.position.z = -160;
-		}
-
-		if (camera.position.z <= 10) {
-			camera.position.z = 160;
-			camera.position.y = 0;
-			camera.position.x = 0;
-
-			camera.lookAt(0, 0, 0);
 		}
 
 		//Varying the points on each frame
