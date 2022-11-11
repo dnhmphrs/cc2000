@@ -41,7 +41,7 @@
 
 	{
 		const color = 0x0033bb;
-		const density = 0.015;
+		const density = 0.0165;
 		scene.fog = new THREE.FogExp2(color, density);
 	}
 
@@ -126,7 +126,12 @@
 		spermGroup.rotation.x = camera.rotation.x;
 		spermGroup.rotation.y = camera.rotation.y;
 
-		spermGroup.position.z -= 2;
+		spermGroup.position.z -= 1;
+
+		if (camera.position.z >= 130) {
+			camera.fov = 160 - camera.position.z;
+			camera.updateProjectionMatrix();
+		}
 
 		if (camera.position.z <= 10) {
 			camera.position.z = 160;
