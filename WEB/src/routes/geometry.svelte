@@ -146,6 +146,11 @@
 			camera.updateProjectionMatrix();
 		}
 
+		// this block fixes a bug where the sperm is brielfy visible after entering the
+		if (camera.position.z <= 11) {
+			spermGroup.position.z = -160;
+		}
+
 		//Varying the points on each frame
 		step += 0.00001;
 		let geometry = pc.geometry;
