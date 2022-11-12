@@ -7,7 +7,7 @@
 </svelte:head>
 
 <section>
-	<p class="centreButton alt">conception calculator 2000 coming soon</p>
+	<p class="centreButton alt">conception calculator 2000 coming soonish</p>
 	{#if $screenType == 3}
 		<!-- <p class="hint">use arrow keys to swim</p> -->
 	{/if}
