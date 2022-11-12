@@ -68,7 +68,7 @@
 	// scene.add(plane2);
 	// plane2.position.z -= 10;
 
-	const light = new THREE.HemisphereLight(0xf9d6ff, 0x0033bb, 2.5);
+	const light = new THREE.HemisphereLight(0xf9d6ff, 0x0033bb, 2);
 	scene.add(light);
 
 	// ---------------------------------------------------------------------------
