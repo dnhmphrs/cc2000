@@ -28,6 +28,7 @@
 declare module '$env/static/private' {
 	export const VITE_SUPABASE_URL: string;
 	export const VITE_SUPABASE_ANON_KEY: string;
+	export const ADSK_3DSMAX_x64_2023: string;
 	export const ALLUSERSPROFILE: string;
 	export const APPDATA: string;
 	export const ChocolateyInstall: string;
@@ -40,8 +41,6 @@ declare module '$env/static/private' {
 	export const CUDA_PATH_V10_0: string;
 	export const CUDA_PATH_V10_1: string;
 	export const DriverData: string;
-	export const FPS_BROWSER_APP_PROFILE_STRING: string;
-	export const FPS_BROWSER_USER_PROFILE_STRING: string;
 	export const HOMEDRIVE: string;
 	export const HOMEPATH: string;
 	export const INIT_CWD: string;
@@ -162,6 +161,7 @@ declare module '$env/dynamic/private' {
 	export const env: {
 		VITE_SUPABASE_URL: string;
 		VITE_SUPABASE_ANON_KEY: string;
+		ADSK_3DSMAX_x64_2023: string;
 		ALLUSERSPROFILE: string;
 		APPDATA: string;
 		ChocolateyInstall: string;
@@ -174,8 +174,6 @@ declare module '$env/dynamic/private' {
 		CUDA_PATH_V10_0: string;
 		CUDA_PATH_V10_1: string;
 		DriverData: string;
-		FPS_BROWSER_APP_PROFILE_STRING: string;
-		FPS_BROWSER_USER_PROFILE_STRING: string;
 		HOMEDRIVE: string;
 		HOMEPATH: string;
 		INIT_CWD: string;

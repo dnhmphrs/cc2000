@@ -51,7 +51,7 @@
 
 	const sphere = new THREE.Mesh(
 		new THREE.SphereGeometry(10, 32, 16),
-		new THREE.MeshToonMaterial({ color: 0xf9d6ff })
+		new THREE.MeshToonMaterial({ color: 0xd0d0d0 })
 	);
 	scene.add(sphere);
 
