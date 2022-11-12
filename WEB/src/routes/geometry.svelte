@@ -31,7 +31,7 @@
 
 		setTimeout(() => {
 			window.dispatchEvent(new KeyboardEvent('keydown', { key: 's' }));
-		}, '2000');
+		}, '1000');
 	});
 
 	let flyControls = new FlyControls(camera, renderer.domElement);
