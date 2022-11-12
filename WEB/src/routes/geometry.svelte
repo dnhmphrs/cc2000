@@ -55,11 +55,18 @@
 	);
 	scene.add(sphere);
 
-	const plane = new THREE.Mesh(
-		new THREE.PlaneGeometry(10, 10),
-		new THREE.MeshToonMaterial({ color: 0x000000 })
-	);
-	scene.add(plane);
+	// const plane = new THREE.Mesh(
+	// 	new THREE.PlaneGeometry(20, 20),
+	// 	new THREE.MeshToonMaterial({ color: 0x000000 })
+	// );
+	// scene.add(plane);
+
+	// const plane2 = new THREE.Mesh(
+	// 	new THREE.PlaneGeometry(5, 5),
+	// 	new THREE.MeshToonMaterial({ color: 0x000000 })
+	// );
+	// scene.add(plane2);
+	// plane2.position.z -= 10;
 
 	const light = new THREE.HemisphereLight(0xf9d6ff, 0x0033bb, 2.5);
 	scene.add(light);
@@ -140,7 +147,12 @@
 		id = requestAnimationFrame(render);
 		flyControls.update(0.001);
 
-		if (camera.position.z <= 0) {
+		if (camera.position.z <= 10) {
+			renderer.setClearColor(0x000000, 1);
+		}
+
+		if (camera.position.z <= -10) {
+			renderer.setClearColor(0x0033bb, 1);
 			camera.position.z = 160;
 			camera.position.y = 0;
 			camera.position.x = 0;
