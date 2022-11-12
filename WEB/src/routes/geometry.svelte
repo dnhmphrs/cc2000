@@ -123,7 +123,7 @@
 		spermGroup.position.x = camera.position.x;
 		spermGroup.position.y = camera.position.y - 0.1;
 
-		spermGroup.rotation.z += camera.rotation.z;
+		// spermGroup.rotation.z += camera.rotation.z;
 		spermGroup.rotation.x = camera.rotation.x * 1.2;
 		spermGroup.rotation.y = camera.rotation.y * 1.2;
 	};
