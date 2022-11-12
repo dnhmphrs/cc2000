@@ -160,7 +160,7 @@
 			camera.lookAt(0, 0, 0);
 		}
 
-		spermGroup.rotation.z -= 0.1;
+		spermGroup.rotation.z -= 0.125;
 
 		followCamera();
 		spermGroup.position.z -= 6;
