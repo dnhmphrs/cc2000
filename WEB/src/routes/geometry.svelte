@@ -41,7 +41,7 @@
 
 	{
 		const color = 0x0033bb;
-		const density = 0.025;
+		const density = 0.02;
 		scene.fog = new THREE.FogExp2(color, density);
 	}
 
