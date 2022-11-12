@@ -63,8 +63,6 @@
 	gltfLoader.load('/sperm.glb', (glb) => {
 		sperm = glb.scene.children[0];
 
-		console.log(sperm);
-
 		sperm.scale.set(1, 1, 1);
 		// sperm.position.z = 100;
 		sperm.rotation.x += Math.PI;
