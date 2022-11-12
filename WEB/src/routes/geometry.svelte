@@ -19,6 +19,8 @@
 
 	let sperm;
 
+	let firstLoad = true;
+
 	// Setting up the renderer. This will be called later to render scene with the camera setup above
 	let renderer = new THREE.WebGLRenderer({ antialias: false });
 	renderer.setPixelRatio(window.devicePixelRatio);
@@ -35,7 +37,7 @@
 	let flyControls = new FlyControls(camera, renderer.domElement);
 	flyControls.dragToLook = true;
 	flyControls.movementSpeed = 100;
-	flyControls.rollSpeed = 0.07;
+	flyControls.rollSpeed = 0.05;
 	flyControls.autoForward = true;
 	flyControls.update(0.001);
 
@@ -47,10 +49,17 @@
 
 	// ---------------------------------------------------------------------------
 
-	const sphereGeometry = new THREE.SphereGeometry(10, 32, 16);
-	const material = new THREE.MeshToonMaterial({ color: 0xf9d6ff });
-	const sphere = new THREE.Mesh(sphereGeometry, material);
+	const sphere = new THREE.Mesh(
+		new THREE.SphereGeometry(10, 32, 16),
+		new THREE.MeshToonMaterial({ color: 0xf9d6ff })
+	);
 	scene.add(sphere);
+
+	const plane = new THREE.Mesh(
+		new THREE.PlaneGeometry(10, 10),
+		new THREE.MeshToonMaterial({ color: 0x000000 })
+	);
+	scene.add(plane);
 
 	const light = new THREE.HemisphereLight(0xf9d6ff, 0x0033bb, 2.5);
 	scene.add(light);
@@ -69,7 +78,7 @@
 		sperm.position.y -= 0.71;
 		sperm.position.z += 4;
 
-		sperm.scale.set(0.5, 0.5, 0.5);
+		sperm.scale.set(0.4, 0.4, 0.4);
 
 		// sperm.material = material;
 
@@ -131,7 +140,7 @@
 		id = requestAnimationFrame(render);
 		flyControls.update(0.001);
 
-		if (camera.position.z <= 10) {
+		if (camera.position.z <= 0) {
 			camera.position.z = 160;
 			camera.position.y = 0;
 			camera.position.x = 0;
@@ -146,9 +155,11 @@
 
 		// spermGroup.position.z -= 3;
 
-		if (camera.position.z >= 130) {
+		if (firstLoad && camera.position.z >= 130) {
 			camera.fov = 160 - camera.position.z;
 			camera.updateProjectionMatrix();
+		} else {
+			firstLoad = false;
 		}
 
 		// this block fixes a bug where the sperm is brielfy visible after entering the
@@ -157,13 +168,13 @@
 		// }
 
 		//Varying the points on each frame
-		step += 0.00001;
+		step += 0.000005;
 		let geometry = pc.geometry;
 		let a = 0.9 + Math.random() * 7;
 		let b = 3.4 + Math.random() * 8;
 		let f = 9.9 + Math.random() * 9;
 		let g = 1 + Math.random();
-		let t = 0.0004;
+		let t = 0.0005;
 
 		// geometry.vertices.forEach(function (v) {
 		// 	v.x = v.x - t * a * v.x + t * v.y * v.y - t * v.z * v.z + t * a * f;
