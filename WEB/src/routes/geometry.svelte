@@ -50,10 +50,16 @@
 	// ---------------------------------------------------------------------------
 
 	const sphere = new THREE.Mesh(
-		new THREE.SphereGeometry(10, 32, 16),
-		new THREE.MeshToonMaterial({ color: 0xd0d0d0 })
+		new THREE.SphereGeometry(7, 32, 16),
+		new THREE.MeshToonMaterial({ color: 0xffc0cb })
 	);
 	scene.add(sphere);
+
+	const outerSphere = new THREE.Mesh(
+		new THREE.SphereGeometry(10, 32, 16),
+		new THREE.MeshPhysicalMaterial({ roughness: 0.2, transmission: 1 })
+	);
+	scene.add(outerSphere);
 
 	// const plane = new THREE.Mesh(
 	// 	new THREE.PlaneGeometry(20, 20),
@@ -164,7 +170,6 @@
 		if (spermGroup.rotation.z <= -2 * Math.PI) {
 			spermGroup.rotation.z = 0;
 		}
-		console.log(spermGroup.rotation.z);
 
 		followCamera();
 		spermGroup.position.z -= 5.5;
