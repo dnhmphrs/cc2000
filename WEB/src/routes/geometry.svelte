@@ -59,7 +59,8 @@
 
 	const outerSphere = new THREE.Mesh(
 		new THREE.SphereGeometry(11, 32, 16),
-		new THREE.MeshPhysicalMaterial({ roughness: 0.2, transmission: 0.8 })
+		// new THREE.MeshPhysicalMaterial({ roughness: 0.2, transmission: 0.8 })
+		new THREE.MeshToonMaterial({ color: 0xffc0cb, transparent: true, opacity: 0.5 })
 	);
 	scene.add(outerSphere);
 
