@@ -79,13 +79,12 @@
 	gltfLoader.load('/sperm.glb', (glb) => {
 		sperm = glb.scene.children[0];
 
-		sperm.scale.set(1, 1, 1);
 		// sperm.position.z = 100;
 		sperm.rotation.x += Math.PI;
-		sperm.position.y -= 0.71;
+		sperm.position.y -= 0.695;
 		sperm.position.z += 4;
 
-		sperm.scale.set(0.4, 0.4, 0.4);
+		sperm.scale.set(0.2, 0.4, 0.2);
 
 		// sperm.material = material;
 
@@ -160,10 +159,15 @@
 			camera.lookAt(0, 0, 0);
 		}
 
-		spermGroup.rotation.z -= 0.125;
+		// spermGroup.rotation.z -= 0.125;
+		spermGroup.rotation.z -= (-spermGroup.rotation.z / Math.PI / 24 + 0.2) / 1.2;
+		if (spermGroup.rotation.z <= -2 * Math.PI) {
+			spermGroup.rotation.z = 0;
+		}
+		console.log(spermGroup.rotation.z);
 
 		followCamera();
-		spermGroup.position.z -= 6;
+		spermGroup.position.z -= 5.5;
 
 		// spermGroup.position.z -= 3;
 
