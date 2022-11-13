@@ -153,7 +153,7 @@
 	let render = function () {
 		renderer.render(scene, camera);
 		id = requestAnimationFrame(render);
-		flyControls.update(0.0013);
+		flyControls.update(0.001);
 
 		if (camera.position.z <= 10) {
 			renderer.setClearColor(0x000000, 1);
