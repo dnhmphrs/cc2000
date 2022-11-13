@@ -58,7 +58,7 @@
 	sphere.position.z += 2.5;
 
 	const outerSphere = new THREE.Mesh(
-		new THREE.SphereGeometry(10, 32, 16),
+		new THREE.SphereGeometry(11, 32, 16),
 		new THREE.MeshPhysicalMaterial({ roughness: 0.2, transmission: 0.8 })
 	);
 	scene.add(outerSphere);
