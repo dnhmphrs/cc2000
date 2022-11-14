@@ -168,11 +168,11 @@
 			camera.lookAt(0, 0, 0);
 		}
 
-		// spermGroup.rotation.z -= 0.125;
-		spermGroup.rotation.z -= (-spermGroup.rotation.z / Math.PI / 24 + 0.2) / 1.2;
-		if (spermGroup.rotation.z <= -2 * Math.PI) {
-			spermGroup.rotation.z = 0;
-		}
+		spermGroup.rotation.z -= 0.125;
+		// spermGroup.rotation.z -= (-spermGroup.rotation.z / Math.PI / 24 + 0.2) / 1.2;
+		// if (spermGroup.rotation.z <= -2 * Math.PI) {
+		// 	spermGroup.rotation.z = 0;
+		// }
 
 		followCamera();
 		spermGroup.position.z -= 5.5;
