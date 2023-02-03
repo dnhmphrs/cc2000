@@ -1,5 +1,5 @@
 <script>
-	import { spicy } from '$lib/store/store';
+	import { spicy, iframe } from '$lib/store/store';
 
 	let handleGo = () => {
 		go.set(true);
@@ -51,10 +51,10 @@
 
 		max-height: 540px;
 		max-width: 540px;
-		min-height: 540px;
-		min-width: 540px;
+		/* min-height: 540px;
+		min-width: 540px; */
 
-		border: solid 4px var(--white);
+		border: solid 2px var(--white);
 	}
 
 	.body {
@@ -64,7 +64,7 @@
 		justify-content: space-between;
 		padding: 10px 0;
 		/* background: var(--white); */
-		border: solid 4px var(--white);
+		border: solid 2px var(--white);
 	}
 
 	.body div {
@@ -114,7 +114,7 @@
 		width: 100%;
 		height: 100px;
 		/* background: var(--blue); */
-		border: solid 4px var(--white);
+		border: solid 2px var(--white);
 
 		display: flex;
 		align-items: center;

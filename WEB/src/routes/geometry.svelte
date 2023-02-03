@@ -26,7 +26,7 @@
 	let renderer = new THREE.WebGLRenderer({ antialias: false });
 	renderer.setPixelRatio(window.devicePixelRatio);
 	renderer.setSize(width, height);
-	renderer.setClearColor(0x0033bb, 1);
+	renderer.setClearColor(0x0033bb, 0);
 	onMount(() => {
 		container.appendChild(renderer.domElement);
 
@@ -123,14 +123,21 @@
 		spermGroup.position.z = camera.position.z;
 	};
 
+	const clock = new THREE.Clock();
+	let previousTime = 0;
+
 	let render = function () {
 		renderer.render(scene, camera);
 		id = requestAnimationFrame(render);
 		// controls.update();
 
+		const elapsedTime = clock.getElapsedTime();
+		const deltaTime = elapsedTime - previousTime;
+		previousTime = elapsedTime;
+
 		if ($go) {
-			camera.position.z -= 0.5;
-			camera.rotation.z += 0.01;
+			camera.position.z -= deltaTime * 20;
+			camera.rotation.z += deltaTime / 5;
 		}
 
 		// if (camera.position.z <= 10) {
@@ -138,7 +145,7 @@
 		// }
 
 		if (camera.position.z <= 0) {
-			camera.position.z = Math.random() * 50 + 50;
+			camera.position.z = Math.random() * 30 + 70;
 			camera.foc = 35;
 
 			camera.position.y = 0;

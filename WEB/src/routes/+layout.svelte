@@ -1,7 +1,7 @@
 <script>
 	import '../app.css';
 	import { onMount } from 'svelte';
-	import { screenType } from '$lib/store/store';
+	import { screenType, iframe } from '$lib/store/store';
 
 	let Geometry;
 	onMount(async () => {
@@ -40,6 +40,11 @@
 		} else {
 			//laptop
 			screenType.set(3);
+		}
+
+		if (window.location !== window.parent.location) {
+			// The page is in an iframe
+			iframe.set(true);
 		}
 	});
 </script>
