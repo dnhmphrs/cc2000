@@ -114,6 +114,10 @@
 		cursor: pointer;
 	}
 
+	.calculate h5 {
+		padding-bottom: 0;
+	}
+
 	.calculate:hover {
 		background: var(--white);
 		color: var(--blue);
