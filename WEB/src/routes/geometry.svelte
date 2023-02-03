@@ -23,7 +23,7 @@
 	let firstLoad = true;
 
 	// Setting up the renderer. This will be called later to render scene with the camera setup above
-	let renderer = new THREE.WebGLRenderer({ antialias: true });
+	let renderer = new THREE.WebGLRenderer({ antialias: false });
 	renderer.setPixelRatio(window.devicePixelRatio);
 	renderer.setSize(width, height);
 	renderer.setClearColor(0x0033bb, 1);
@@ -103,8 +103,6 @@
 			}
 		});
 
-		console.log(mac);
-
 		// sperm.position.z = 100;
 		// mac.rotation.x += 0.1;
 		// mac.position.y -= 0.695;
@@ -131,7 +129,7 @@
 		// controls.update();
 
 		if ($go) {
-			camera.position.z -= 1;
+			camera.position.z -= 0.5;
 			camera.rotation.z += 0.01;
 		}
 

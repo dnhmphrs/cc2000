@@ -11,9 +11,8 @@
 </svelte:head>
 
 <section>
-	<h6>CONCEPTION CALCULATOR 2000</h6>
-	<!-- <div>
-
+	<div>
+		<h6>CONCEPTION CALCULATOR 2000</h6>
 		<h1>CALCULATE THE SONG YOU WERE CONCEIVED TO</h1>
 	</div>
 
@@ -31,7 +30,7 @@
 
 	<div class="calculate" on:click={() => handleGo()}>
 		<h5>CALCULATE</h5>
-	</div> -->
+	</div>
 </section>
 
 <style>
@@ -40,7 +39,7 @@
 		width: 100%;
 		display: flex;
 		overflow: auto;
-		/* background: var(--blue); */
+		background: var(--blue);
 
 		display: flex;
 		flex-flow: column nowrap;
