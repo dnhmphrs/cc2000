@@ -104,7 +104,7 @@
 	.calculate {
 		width: 100%;
 		height: 100px;
-		background: var(--blue);
+		/* background: var(--blue); */
 		border: solid 4px var(--white);
 
 		display: flex;
