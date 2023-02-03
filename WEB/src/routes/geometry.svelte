@@ -132,15 +132,15 @@
 
 		if ($go) {
 			camera.position.z -= 1;
+			camera.rotation.z += 0.01;
 		}
 
-		if (camera.position.z <= 10) {
-			renderer.setClearColor(0x000000, 1);
-		}
+		// if (camera.position.z <= 10) {
+		// 	renderer.setClearColor(0x000000, 1);
+		// }
 
 		if (camera.position.z <= 10) {
-			renderer.setClearColor(0x0033bb, 1);
-			camera.position.z = 160;
+			camera.position.z = 100;
 			camera.position.y = 0;
 			camera.position.x = 0;
 
@@ -164,6 +164,13 @@
 		// } else {
 		// 	firstLoad = false;
 		// }
+
+		if (camera.position.z <= 50) {
+			camera.fov = 100 - camera.position.z - 20;
+			camera.updateProjectionMatrix();
+		} else {
+			firstLoad = false;
+		}
 
 		// this block fixes a bug where the sperm is brielfy visible after entering the
 		// if (camera.position.z <= 10.5) {
