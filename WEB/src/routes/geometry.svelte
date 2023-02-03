@@ -139,11 +139,13 @@
 		// 	renderer.setClearColor(0x000000, 1);
 		// }
 
-		if (camera.position.z <= 10) {
-			camera.position.z = 100;
+		if (camera.position.z <= 0) {
+			camera.position.z = Math.random() * 30 + 70;
+
 			camera.position.y = 0;
 			camera.position.x = 0;
 
+			camera.fov += 60;
 			camera.lookAt(0, 0, 0);
 		}
 
