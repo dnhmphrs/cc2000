@@ -15,8 +15,8 @@
 	let width = window.innerWidth;
 
 	// Setting up a camera
-	let camera = new THREE.PerspectiveCamera(30, width / height, 0.5, 400);
-	camera.position.z = 160;
+	let camera = new THREE.PerspectiveCamera(35, width / height, 0.5, 400);
+	camera.position.z = 100;
 
 	let sperm, mac;
 
@@ -44,7 +44,7 @@
 
 	{
 		const color = 0x0033bb;
-		const density = 0.015;
+		const density = 0.02;
 		scene.fog = new THREE.FogExp2(color, density);
 	}
 
@@ -140,7 +140,8 @@
 		// }
 
 		if (camera.position.z <= 0) {
-			camera.position.z = Math.random() * 30 + 70;
+			camera.position.z = Math.random() * 50 + 50;
+			camera.foc = 35;
 
 			camera.position.y = 0;
 			camera.position.x = 0;

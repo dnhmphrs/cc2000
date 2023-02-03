@@ -40,7 +40,7 @@
 		width: 100%;
 		display: flex;
 		overflow: auto;
-		background: var(--blue);
+		/* background: var(--blue); */
 
 		display: flex;
 		flex-flow: column nowrap;
