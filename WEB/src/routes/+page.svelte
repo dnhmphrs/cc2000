@@ -75,7 +75,7 @@
 	}
 
 	input {
-		color: blue;
+		color: black;
 		padding: 12px;
 	}
 
