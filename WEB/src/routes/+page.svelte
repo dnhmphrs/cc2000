@@ -39,7 +39,7 @@
 		width: 100%;
 		display: flex;
 		overflow: auto;
-		/* max-width: 800px; */
+		background: var(--blue);
 
 		display: flex;
 		flex-flow: column nowrap;
@@ -49,10 +49,10 @@
 		padding: 40px;
 		margin: 20px;
 
-		max-height: 600px;
-		max-width: 600px;
-		min-height: 600px;
-		min-width: 600px;
+		max-height: 540px;
+		max-width: 540px;
+		min-height: 540px;
+		min-width: 540px;
 
 		border: solid 4px var(--white);
 	}
@@ -62,7 +62,7 @@
 		display: flex;
 		flex-flow: row wrap;
 		justify-content: space-between;
-		padding: 50px 0;
+		padding: 10px 0;
 		/* background: var(--white); */
 		border: solid 4px var(--white);
 	}
@@ -72,6 +72,8 @@
 		display: flex;
 		flex-flow: column wrap;
 		align-items: center;
+		gap: 10px;
+		padding: 20px;
 	}
 
 	input {
@@ -87,20 +89,20 @@
 	}
 
 	h1 {
-		font-size: 36px;
+		font-size: 32px;
 		letter-spacing: 2px;
 	}
 
 	h5 {
-		font-size: 28px;
-		padding-bottom: 20px;
+		font-size: 24px;
+		padding-bottom: 0px;
 		letter-spacing: 1px;
 	}
 
 	h6 {
 		font-family: 'degular', sans-serif;
 		font-weight: 500;
-		font-size: 20px;
+		font-size: 18px;
 
 		text-align: center;
 		letter-spacing: 4px;

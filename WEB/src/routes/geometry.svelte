@@ -1,7 +1,7 @@
 <script>
 	import { onMount, onDestroy } from 'svelte';
 	import { go } from '$lib/store/store';
-	// import { FlyControls } from 'three/examples/jsm/controls/FlyControls';
+	// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 	import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 	import * as THREE from 'three';
 
@@ -15,15 +15,15 @@
 	let width = window.innerWidth;
 
 	// Setting up a camera
-	let camera = new THREE.PerspectiveCamera(25, width / height, 0.5, 400);
+	let camera = new THREE.PerspectiveCamera(30, width / height, 0.5, 400);
 	camera.position.z = 160;
 
-	let sperm;
+	let sperm, mac;
 
 	let firstLoad = true;
 
 	// Setting up the renderer. This will be called later to render scene with the camera setup above
-	let renderer = new THREE.WebGLRenderer({ antialias: false });
+	let renderer = new THREE.WebGLRenderer({ antialias: true });
 	renderer.setPixelRatio(window.devicePixelRatio);
 	renderer.setSize(width, height);
 	renderer.setClearColor(0x0033bb, 1);
@@ -35,7 +35,7 @@
 		}, '1000');
 	});
 
-	// let flyControls = new FlyControls(camera, renderer.domElement);
+	// let controls = new OrbitControls(camera, renderer.domElement);
 	// flyControls.dragToLook = true;
 	// flyControls.movementSpeed = 100;
 	// flyControls.rollSpeed = 0.05;
@@ -89,6 +89,36 @@
 	scene.add(spermGroup);
 	spermGroup.position.y = -0.1;
 
+	let macGroup = new THREE.Group();
+	gltfLoader.load('/mac.glb', (glb) => {
+		mac = glb.scene.children[0];
+
+		mac.traverse(function (child) {
+			if (child.material) {
+				child.material = new THREE.MeshPhongMaterial({
+					color: 0xffffff,
+					wireframe: true,
+					vertexColors: THREE.VertexColors
+				});
+			}
+		});
+
+		console.log(mac);
+
+		// sperm.position.z = 100;
+		// mac.rotation.x += 0.1;
+		// mac.position.y -= 0.695;
+		// mac.position.z += 4;
+
+		// mac.scale.set(0.2, 0.2, 0.2);
+
+		macGroup.add(mac);
+	});
+
+	scene.add(macGroup);
+	macGroup.position.z = 5;
+	macGroup.position.y = -28;
+
 	// ---------------------------------------------------------------------------
 
 	let followCamera = () => {
@@ -98,17 +128,17 @@
 	let render = function () {
 		renderer.render(scene, camera);
 		id = requestAnimationFrame(render);
-		// flyControls.update(0.001);
+		// controls.update();
 
 		if ($go) {
-			camera.position.z -= 0.1;
+			camera.position.z -= 1;
 		}
 
 		if (camera.position.z <= 10) {
 			renderer.setClearColor(0x000000, 1);
 		}
 
-		if (camera.position.z <= -10) {
+		if (camera.position.z <= 10) {
 			renderer.setClearColor(0x0033bb, 1);
 			camera.position.z = 160;
 			camera.position.y = 0;
@@ -117,23 +147,23 @@
 			camera.lookAt(0, 0, 0);
 		}
 
-		spermGroup.rotation.z -= 0.15;
+		// spermGroup.rotation.z -= 0.15;
 		// spermGroup.rotation.z -= (-spermGroup.rotation.z / Math.PI / 24 + 0.2) / 1.2;
 		// if (spermGroup.rotation.z <= -2 * Math.PI) {
 		// 	spermGroup.rotation.z = 0;
 		// }
 
-		followCamera();
+		// followCamera();
 		spermGroup.position.z -= 5.5;
 
 		// spermGroup.position.z -= 3;
 
-		if (firstLoad && camera.position.z >= 130) {
-			camera.fov = 160 - camera.position.z;
-			camera.updateProjectionMatrix();
-		} else {
-			firstLoad = false;
-		}
+		// if (firstLoad && camera.position.z >= 100) {
+		// 	camera.fov = 160 - camera.position.z;
+		// 	camera.updateProjectionMatrix();
+		// } else {
+		// 	firstLoad = false;
+		// }
 
 		// this block fixes a bug where the sperm is brielfy visible after entering the
 		// if (camera.position.z <= 10.5) {
