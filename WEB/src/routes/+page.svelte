@@ -12,6 +12,7 @@
 
 <section>
 	<div>
+		<h6>CONCEPTION CALCULATOR 2000</h6>
 		<h1>CALCULATE THE SONG YOU WERE CONCEIVED TO</h1>
 	</div>
 
@@ -61,7 +62,9 @@
 		display: flex;
 		flex-flow: row wrap;
 		justify-content: space-between;
-		padding-bottom: 50px;
+		padding: 50px 0;
+		/* background: var(--white); */
+		border: solid 4px var(--white);
 	}
 
 	.body div {
@@ -72,7 +75,7 @@
 	}
 
 	input {
-		color: black;
+		color: blue;
 		padding: 12px;
 	}
 
@@ -84,21 +87,25 @@
 	}
 
 	h1 {
-		font-size: 42px;
+		font-size: 36px;
+		letter-spacing: 2px;
 	}
 
 	h5 {
 		font-size: 28px;
 		padding-bottom: 20px;
+		letter-spacing: 1px;
 	}
 
 	h6 {
 		font-family: 'degular', sans-serif;
 		font-weight: 500;
-		font-size: 18px;
+		font-size: 20px;
 
 		text-align: center;
-		letter-spacing: 0.44vw;
+		letter-spacing: 4px;
+		opacity: 0.25;
+		padding-bottom: 10px;
 	}
 
 	.calculate {
