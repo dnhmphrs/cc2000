@@ -6,6 +6,7 @@
 	--blue: #0033bb;
 	--black: #141414;
 	--white: #fafafa;
+	--pink: #f2acb9;
 }
 
 html,
@@ -77,49 +78,6 @@ a:hover {
 ::-webkit-scrollbar-thumb {
 	background: #1b1c1d !important;
 	border-radius: 0;
-}
-
-.centreButton,
-.centreButton.prevent:hover {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 20;
-	opacity: 1;
-	background: var(--black);
-	border: solid 1px var(--white);
-	padding: 0 5px;
-	color: var(--white);
-	min-width: 280px;
-	max-width: 280px;
-
-	user-select: none;
-
-	text-align: justify;
-	text-justify: inter-word;
-	text-align-last: justify;
-
-	height: 3.2rem;
-}
-
-.centreButton:after {
-	content: '';
-	display: inline-block;
-	width: 100%;
-}
-
-.centreButton:hover {
-	background: var(--white);
-	color: var(--black);
-	border-color: var(--black);
-	opacity: 1;
-}
-
-.centreButton.alt {
-	background: var(--none);
-	border: solid 1px var(--white);
-	color: var(--white);
 }
 
 @media (max-width: 800px) {
