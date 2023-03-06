@@ -1,6 +1,5 @@
 <script>
 	import { onMount, onDestroy } from 'svelte';
-	import { go } from '$lib/store/store';
 	// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 	import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 	import * as THREE from 'three';
@@ -135,10 +134,10 @@
 		const deltaTime = elapsedTime - previousTime;
 		previousTime = elapsedTime;
 
-		if ($go) {
-			camera.position.z -= deltaTime * 20;
-			camera.rotation.z += deltaTime / 5;
-		}
+		// if ($go) {
+		// 	camera.position.z -= deltaTime * 20;
+		// 	camera.rotation.z += deltaTime / 5;
+		// }
 
 		// if (camera.position.z <= 10) {
 		// 	renderer.setClearColor(0x000000, 1);

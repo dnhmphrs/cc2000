@@ -6,6 +6,7 @@
 	--blue: #0033bb;
 	--black: #141414;
 	--white: #fafafa;
+	--white-50: #fafafa80;
 	--pink: #f2acb9;
 }
 
@@ -24,7 +25,6 @@ body {
 	justify-content: center;
 	font-family: untitled-sans;
 	box-sizing: border-box;
-	text-transform: uppercase;
 }
 
 p,

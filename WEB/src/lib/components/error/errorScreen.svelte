@@ -1,6 +1,10 @@
 <script>
 	export let error = {};
 	export let status;
+
+	let handleProgress = () => {
+		page.set(1);
+	};
 </script>
 
 <svelte:head>

@@ -1,26 +1,42 @@
 <script>
+	let handleProgress = () => {
+		page.set(1);
+	};
 </script>
 
 <svelte:head>
-	<title>404 not found</title>
+	<title>CC2000 | 404</title>
 </svelte:head>
 <section>
-	<div class="message">
-		<a href="/"><h2>404 ERROR</h2></a>
-	</div>
+	<img src="/gifs/404.gif" alt="404 error" />
+	<h1 on:click={() => handleProgress()}>You shouldn’t be here. Run.</h1>
 </section>
 
 <style>
 	section {
-		position: fixed;
+		width: 100%;
+		height: 100%;
+		display: flex;
+	}
+
+	h1 {
+		text-align: center;
+
+		position: absolute;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		z-index: 100;
-		color: var(--black);
+		background: black;
+		padding: 0.5rem 1rem;
+
+		border: solid 1px var(--white-50);
+		color: var(--white-50);
+
+		cursor: pointer;
 	}
 
-	a {
-		cursor: pointer;
+	h1:hover {
+		border-color: var(--white);
+		color: var(--white);
 	}
 </style>
