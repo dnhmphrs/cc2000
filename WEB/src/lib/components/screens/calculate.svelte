@@ -11,7 +11,7 @@
 
 		// get sunday
 		let day = date.getDay();
-		let diff = date.getDate() - day + (day == 0 ? -6 : 1);
+		let diff = date.getDate() - day;
 		let sunday_date = new Date(date.setDate(diff));
 		let sundayString = sunday_date.toISOString().slice(0, 10);
 		console.log(sundayString);
