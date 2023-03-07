@@ -12,10 +12,10 @@
 	<title>CC2000 | 404</title>
 </svelte:head>
 <section>
-	<img src="/gifs/the-future.gif" alt="404 error" />
+	<!-- <img src="/gifs/the-future.gif" alt="404 error" /> -->
 	<h1 on:click={() => handleProgress()}>
-		COPY: You were born in the After Time. Those lucky enough to be born were conceived to “Baby” by
-		Justin Bieber as it is the only remaining music allowed by The Council.
+		Short: Our servers overheated. The algorithm found your moment of conception too hot for
+		calculation. Your parents FUCK.
 	</h1>
 </section>
 

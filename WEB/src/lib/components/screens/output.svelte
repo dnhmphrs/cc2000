@@ -23,18 +23,20 @@
 <style>
 	section {
 		width: 100%;
-		height: 100%;
+		height: 50%;
 		display: flex;
+		flex-flow: column nowrap;
+
+		justify-content: space-around;
+		align-items: center;
+
+		border: solid 1px var(--white-50);
+		color: var(--white-50);
+		padding: 1rem;
 	}
 
 	h1 {
 		text-align: center;
-
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		/* background: black; */
 		padding: 0.5rem 1rem;
 
 		border: solid 1px var(--white-50);

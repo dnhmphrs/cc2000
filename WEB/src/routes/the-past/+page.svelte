@@ -1,6 +1,10 @@
 <script>
+	import { page } from '$lib/store/store';
+	import { goto } from '$app/navigation';
+
 	let handleProgress = () => {
 		page.set(1);
+		goto('/', { replaceState: true });
 	};
 </script>
 
