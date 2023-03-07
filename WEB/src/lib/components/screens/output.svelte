@@ -1,5 +1,9 @@
 <script>
-	import { page } from '$lib/store/store';
+	import { page, track } from '$lib/store/store';
+
+	let uri = $track.spotify_uri.substring(14);
+	console.log(uri);
+	let src = `https://open.spotify.com/embed/track/${uri}?utm_source=generator`;
 
 	let handleProgress = () => {
 		page.set(1);
@@ -7,9 +11,10 @@
 </script>
 
 <section>
+	<!-- svelte-ignore a11y-missing-attribute -->
 	<iframe
 		style="border-radius:12px"
-		src="https://open.spotify.com/embed/track/6epn3r7S14KUqlReYr77hA?utm_source=generator"
+		{src}
 		width="100%"
 		height="352"
 		frameBorder="0"

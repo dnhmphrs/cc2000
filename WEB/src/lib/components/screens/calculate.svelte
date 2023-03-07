@@ -1,10 +1,48 @@
 <script>
-	import { spicy, page, date } from '$lib/store/store';
+	import { spicy, page, date, track } from '$lib/store/store';
+	import { goto } from '$app/navigation';
+
+	import data from '$lib/data/cc2000_data.json';
+
+	let conceptionNearestSunday = (date_str) => {
+		// get conception date
+		let date = new Date(date_str);
+		date.setDate(date.getDate() - 268);
+
+		// get sunday
+		let day = date.getDay();
+		let diff = date.getDate() - day + (day == 0 ? -6 : 1);
+		let sunday_date = new Date(date.setDate(diff));
+		let sundayString = sunday_date.toISOString().slice(0, 10);
+
+		return sundayString;
+	};
+
+	let handleEdgeCases = (date) => {
+		let error = false;
+		// if date is before 1958-06-01
+		if (date < '1958-06-01') {
+			goto('/the-past', { replaceState: true });
+			error = true;
+		}
+		// if date is after 2023-03-05
+		if (date > '2023-03-05') {
+			goto('/the-future', { replaceState: true });
+			error = true;
+		}
+
+		return error;
+	};
 
 	let handleProgress = () => {
-		console.log($date);
-		console.log($spicy);
-		page.set(3);
+		let sunday = conceptionNearestSunday($date);
+		let error = handleEdgeCases(sunday);
+
+		if (!error) {
+			track.set(data[sunday][$spicy]);
+			console.log($track);
+			page.set(3);
+		}
 	};
 </script>
 
@@ -20,7 +58,7 @@
 
 	<div class="spicy">
 		<h6>HOW SPICY?</h6>
-		<input type="range" id="volume" name="volume" bind:value={$spicy} min="0" max="10" />
+		<input type="range" id="volume" name="volume" bind:value={$spicy} min="0" max="9" />
 	</div>
 
 	<div class="calculate" on:click={() => handleProgress()}>
