@@ -4,23 +4,24 @@
 
 	import data from '$lib/data/cc2000_data.json';
 
-	let conceptionNearestSunday = (date_str) => {
+	let conceptionDate = (date_str) => {
 		// get conception date
 		let date = new Date(date_str);
 		date.setDate(date.getDate() - 268);
-		let tmp = date.toISOString().slice(0, 10);
-		console.log(tmp);
+		let dateString = date.toISOString().slice(0, 10);
+		//console.log(dateString);
 
-		// get sunday
-		let day = date.getDay();
-		console.log(day);
+		return dateString;
+	};
 
-		let diff = date.getDate() - day + 1;
-		let sunday_date = new Date(date.setDate(diff));
-		let sundayString = sunday_date.toISOString().slice(0, 10);
-		console.log(sundayString);
+	let previousDay = (date_str) => {
+		// get previous day
+		let date = new Date(date_str);
+		date.setDate(date.getDate() - 1);
+		let dateString = date.toISOString().slice(0, 10);
+		//console.log(dateString);
 
-		return sundayString;
+		return dateString;
 	};
 
 	let handleEdgeCases = (date) => {
@@ -40,11 +41,20 @@
 	};
 
 	let handleProgress = () => {
-		let sunday = conceptionNearestSunday($date);
-		let error = handleEdgeCases(sunday);
+		let conception_date = conceptionDate($date);
+		let error = handleEdgeCases(conception_date);
 
 		if (!error) {
-			track.set(data[sunday][$spicy]);
+			while (true) {
+				try {
+					track.set(data[conception_date][$spicy]);
+					break;
+				} catch (error) {
+					conception_date = previousDay(conception_date);
+				}
+			}
+
+			track.set(data[conception_date][$spicy]);
 			console.log($track);
 			page.set(3);
 		}
