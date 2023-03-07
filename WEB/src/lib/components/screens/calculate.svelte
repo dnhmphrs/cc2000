@@ -8,10 +8,14 @@
 		// get conception date
 		let date = new Date(date_str);
 		date.setDate(date.getDate() - 268);
+		let tmp = date.toISOString().slice(0, 10);
+		console.log(tmp);
 
 		// get sunday
 		let day = date.getDay();
-		let diff = date.getDate() - day;
+		console.log(day);
+
+		let diff = date.getDate() - day + 1;
 		let sunday_date = new Date(date.setDate(diff));
 		let sundayString = sunday_date.toISOString().slice(0, 10);
 		console.log(sundayString);
