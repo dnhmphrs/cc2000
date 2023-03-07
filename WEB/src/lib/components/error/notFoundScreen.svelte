@@ -6,6 +6,7 @@
 
 <svelte:head>
 	<title>CC2000 | 404</title>
+	<link rel="preload" href="/gifs/404.gif" as="image/gif" />
 </svelte:head>
 <section>
 	<img src="/gifs/404.gif" alt="404 error" />

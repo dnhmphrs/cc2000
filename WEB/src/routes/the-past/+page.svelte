@@ -9,7 +9,8 @@
 </script>
 
 <svelte:head>
-	<title>CC2000 | 404</title>
+	<title>CC2000 | The Past</title>
+	<link rel="preload" href="/gifs/the-past.gif" as="image/gif" />
 </svelte:head>
 <section>
 	<img src="/gifs/the-past.gif" alt="404 error" />

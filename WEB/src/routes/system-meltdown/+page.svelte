@@ -9,7 +9,8 @@
 </script>
 
 <svelte:head>
-	<title>CC2000 | 404</title>
+	<title>CC2000 | System Meltdown</title>
+	<!-- <link rel="preload" href="/gifs/the-future.gif" as="image/gif" /> -->
 </svelte:head>
 <section>
 	<!-- <img src="/gifs/the-future.gif" alt="404 error" /> -->
