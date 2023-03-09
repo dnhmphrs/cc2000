@@ -26,13 +26,16 @@
 
 	let handleEdgeCases = (date) => {
 		let error = false;
+
+		let today = new Date();
+
 		// if date is before 1958-06-01
 		if (date < '1958-06-01') {
 			goto('/the-past', { replaceState: true });
 			error = true;
 		}
 		// if date is after 2023-03-05
-		if (date > '2023-03-05') {
+		if (date > today) {
 			goto('/the-future', { replaceState: true });
 			error = true;
 		}
