@@ -28,14 +28,16 @@
 		let error = false;
 
 		let today = new Date();
+		let todayString = today.toISOString().slice(0, 10);
+		console.log(todayString);
 
 		// if date is before 1958-06-01
-		if (date < '1958-06-01') {
+		if (date <= '1958-06-01') {
 			goto('/the-past', { replaceState: true });
 			error = true;
 		}
 		// if date is after 2023-03-05
-		if (date > today) {
+		if (date >= todayString) {
 			goto('/the-future', { replaceState: true });
 			error = true;
 		}
