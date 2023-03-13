@@ -109,6 +109,32 @@
 		color: var(--black);
 	}
 
+	input[type='range'] {
+		-webkit-appearance: none;
+		cursor: pointer;
+		background: var(--black);
+	}
+
+	input[type='range']::-webkit-slider-runnable-track {
+		width: 300px;
+		height: 2px;
+		margin: 5px;
+		background: var(--pink);
+		border: none;
+		border-radius: 3px;
+	}
+
+	input[type='range']::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		border: none;
+		height: 16px;
+		width: 16px;
+		border-radius: 50%;
+		background: var(--black);
+		border: solid 2px var(--pink);
+		margin-top: -6px;
+	}
+
 	.calculate {
 		background: var(--black);
 		border: solid 1px var(--pink);
