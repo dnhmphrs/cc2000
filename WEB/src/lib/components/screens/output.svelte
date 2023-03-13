@@ -26,7 +26,7 @@
 <style>
 	section {
 		width: 100%;
-		height: 110%;
+		height: 120%;
 		display: flex;
 		flex-flow: row wrap;
 
@@ -37,7 +37,7 @@
 		color: var(--white);
 		border: solid 1px var(--pink);
 
-		padding: 1rem;
+		padding: 2rem;
 		transform: translateY(-5%);
 	}
 
