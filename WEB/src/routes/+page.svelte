@@ -28,4 +28,10 @@
 		width: 400px;
 		height: 400px;
 	}
+
+	@media (max-width: 800px) {
+		main {
+			width: 85%;
+		}
+	}
 </style>
