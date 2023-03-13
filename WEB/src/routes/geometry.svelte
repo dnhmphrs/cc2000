@@ -88,6 +88,19 @@
 
 	// ---------------------------------------------------------------------------
 
+	const size = 100;
+	const divisions = 10;
+
+	const gridHelper2 = new THREE.GridHelper(size, divisions, 0xf9d6ff, 0xf9d6ff);
+	gridHelper2.rotation.x += Math.PI / 2;
+	gridHelper2.position.z -= 100;
+	scene.add(gridHelper2);
+
+	const gridHelper3 = new THREE.GridHelper(size, divisions, 0xf9d6ff, 0xf9d6ff);
+	gridHelper3.rotation.x += Math.PI / 2;
+	gridHelper3.position.z -= 50;
+	scene.add(gridHelper3);
+
 	// const sphere = new THREE.Mesh(
 	// 	new THREE.SphereGeometry(7, 32, 16),
 	// 	new THREE.MeshToonMaterial({ color: 0xffc0cb })
@@ -181,6 +194,8 @@
 
 		// camera.position.z -= deltaTime * 20;
 		camera.position.z -= 0.2;
+		gridHelper2.rotation.y -= 0.001;
+		gridHelper3.rotation.y += 0.001;
 
 		// if (macGroup.rotation.y <= 0) {
 		// 	macGroup.rotation.y += 0.003;
