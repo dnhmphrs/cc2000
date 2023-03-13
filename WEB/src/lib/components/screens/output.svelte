@@ -16,7 +16,7 @@
 		style="border-radius:12px"
 		{src}
 		width="100%"
-		height="352"
+		height="100%"
 		frameBorder="0"
 		allowfullscreen=""
 		allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
@@ -28,9 +28,9 @@
 <style>
 	section {
 		width: 100%;
-		height: 50%;
+		height: 110%;
 		display: flex;
-		flex-flow: column nowrap;
+		flex-flow: row wrap;
 
 		justify-content: space-around;
 		align-items: center;
@@ -42,8 +42,13 @@
 		padding: 1rem;
 	}
 
+	iframe {
+		height: 90%;
+	}
+
 	h1 {
 		text-align: center;
+		flex-shrink: 1;
 		padding: 0.5rem 1rem;
 
 		background: var(--black);

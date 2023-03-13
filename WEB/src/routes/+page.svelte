@@ -11,15 +11,21 @@
 	<title>CONCEPTION CALCULATOR 2000</title>
 </svelte:head>
 
-{#if $page == 1}
-	<Start />
-{:else if $page == 2}
-	<Calculate />
-{:else if $page == 3}
-	<Transition />
-{:else if $page == 4}
-	<Output />
-{/if}
+<main>
+	{#if $page == 1}
+		<Start />
+	{:else if $page == 2}
+		<Calculate />
+	{:else if $page == 3}
+		<Transition />
+	{:else if $page == 4}
+		<Output />
+	{/if}
+</main>
 
 <style>
+	main {
+		width: 400px;
+		height: 400px;
+	}
 </style>

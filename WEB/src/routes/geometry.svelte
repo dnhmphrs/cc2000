@@ -59,7 +59,7 @@
 
 		asciiRenderer = new AsciiRenderer(renderer, {
 			charSet: charSet,
-			fontSize: 12,
+			fontSize: 8,
 			opacity: 0.7
 		});
 
