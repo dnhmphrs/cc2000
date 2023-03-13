@@ -9,6 +9,13 @@
 
 <svelte:head>
 	<title>CONCEPTION CALCULATOR 2000</title>
+	<link
+		rel="preload"
+		as="font"
+		href="/fonts/NB-Architekt-Pro-Regular.woff"
+		type="font/woff"
+		crossorigin="anonymous"
+	/>
 </svelte:head>
 
 <main>
