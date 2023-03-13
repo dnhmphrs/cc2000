@@ -23,7 +23,8 @@ body {
 body {
 	display: flex;
 	justify-content: center;
-	font-family: untitled-sans;
+	font-family: nb-architekt;
+	letter-spacing: 0.2em;
 	box-sizing: border-box;
 }
 
@@ -60,6 +61,12 @@ a:hover {
 @font-face {
 	font-family: untitled-sans;
 	src: url(/fonts/test-untitled-sans-light.woff2) format('woff2');
+	font-weight: 300;
+}
+
+@font-face {
+	font-family: nb-architekt;
+	src: url(/fonts/NB-Architekt-Pro-Regular.woff) format('woff');
 	font-weight: 300;
 }
 
