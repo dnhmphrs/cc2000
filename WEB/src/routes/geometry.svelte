@@ -91,6 +91,11 @@
 	const size = 100;
 	const divisions = 10;
 
+	const gridHelper = new THREE.GridHelper(size, divisions, 0xf9d6ff, 0xf9d6ff);
+	gridHelper.rotation.x += Math.PI / 2;
+	gridHelper.position.z -= 200;
+	scene.add(gridHelper);
+
 	const gridHelper2 = new THREE.GridHelper(size, divisions, 0xf9d6ff, 0xf9d6ff);
 	gridHelper2.rotation.x += Math.PI / 2;
 	gridHelper2.position.z -= 100;
@@ -98,24 +103,24 @@
 
 	const gridHelper3 = new THREE.GridHelper(size, divisions, 0xf9d6ff, 0xf9d6ff);
 	gridHelper3.rotation.x += Math.PI / 2;
-	gridHelper3.position.z -= 50;
+	gridHelper3.position.z -= 0;
 	scene.add(gridHelper3);
 
-	// const sphere = new THREE.Mesh(
-	// 	new THREE.SphereGeometry(7, 32, 16),
-	// 	new THREE.MeshToonMaterial({ color: 0xffc0cb })
-	// );
-	// scene.add(sphere);
+	const sphere = new THREE.Mesh(
+		new THREE.SphereGeometry(7, 32, 16),
+		new THREE.MeshToonMaterial({ color: 0xffc0cb })
+	);
+	scene.add(sphere);
 
-	// const outerSphere = new THREE.Mesh(
-	// 	new THREE.SphereGeometry(11, 32, 16),
-	// 	// new THREE.MeshPhysicalMaterial({ roughness: 0.2, transmission: 0.8 })
-	// 	new THREE.MeshToonMaterial({ color: 0xffc0cb, transparent: true, opacity: 0.5 })
-	// );
-	// scene.add(outerSphere);
+	const outerSphere = new THREE.Mesh(
+		new THREE.SphereGeometry(11, 32, 16),
+		// new THREE.MeshPhysicalMaterial({ roughness: 0.2, transmission: 0.8 })
+		new THREE.MeshToonMaterial({ color: 0xffc0cb, transparent: true, opacity: 0.5 })
+	);
+	scene.add(outerSphere);
 
-	// sphere.position.z = -100;
-	// outerSphere.position.z = -100;
+	sphere.position.z = -150;
+	outerSphere.position.z = -150;
 
 	const light = new THREE.HemisphereLight(0xf9d6ff, 0x0033bb, 2);
 	scene.add(light);
@@ -145,25 +150,22 @@
 	gltfLoader.load('/mac.glb', (glb) => {
 		mac = glb.scene.children[0];
 
-		mac.traverse(function (child) {
-			if (child.material) {
-				child.material = new THREE.MeshPhongMaterial({
-					color: 0xd0d0d0,
-					wireframe: true,
-					vertexColors: THREE.VertexColors
-				});
-			}
-		});
+		// mac.traverse(function (child) {
+		// 	if (child.material) {
+		// 		child.material = new THREE.MeshPhongMaterial({
+		// 			color: 0xd0d0d0,
+		// 			wireframe: true,
+		// 			vertexColors: THREE.VertexColors
+		// 		});
+		// 	}
+		// });
 
-		// mac.scale.set(0.2, 0.2, 0.2);
-
-		macGroup.add(mac);
-		// macGroup.rotation.y = -Math.PI;
+		// macGroup.add(mac);
 	});
 
 	scene.add(macGroup);
 	macGroup.position.z = 5;
-	macGroup.position.z = -140;
+	macGroup.position.z = -150;
 	macGroup.position.y = -28;
 
 	// ---------------------------------------------------------------------------
@@ -194,6 +196,7 @@
 
 		// camera.position.z -= deltaTime * 20;
 		camera.position.z -= 0.2;
+		gridHelper.rotation.y += 0.001;
 		gridHelper2.rotation.y -= 0.001;
 		gridHelper3.rotation.y += 0.001;
 
