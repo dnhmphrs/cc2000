@@ -60,7 +60,7 @@
 		asciiRenderer = new AsciiRenderer(renderer, {
 			charSet: charSet,
 			fontSize: 8,
-			opacity: 0.7
+			opacity: 0.8
 		});
 
 		asciiRenderer.setSize(width, height);
