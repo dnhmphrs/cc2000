@@ -145,6 +145,7 @@
 		// mac.scale.set(0.2, 0.2, 0.2);
 
 		macGroup.add(mac);
+		// macGroup.rotation.y = -Math.PI;
 	});
 
 	scene.add(macGroup);
@@ -181,9 +182,9 @@
 		// camera.position.z -= deltaTime * 20;
 		camera.position.z -= 0.2;
 
-		if (macGroup.rotation.y <= 2 * Math.PI) {
-			macGroup.rotation.y += 0.006;
-		}
+		// if (macGroup.rotation.y <= 0) {
+		// 	macGroup.rotation.y += 0.003;
+		// }
 
 		// if (camera.position.z <= 10) {
 		// 	renderer.setClearColor(0x000000, 1);
@@ -191,6 +192,7 @@
 
 		if (camera.position.z <= -200) {
 			camera.position.z = 100;
+			// macGroup.rotation.y = -Math.PI;
 		}
 
 		spermGroup.rotation.z -= 0.15;
