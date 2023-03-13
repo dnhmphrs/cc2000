@@ -31,7 +31,7 @@
 
 	@media (max-width: 800px) {
 		main {
-			width: 85%;
+			width: 90%;
 		}
 	}
 </style>

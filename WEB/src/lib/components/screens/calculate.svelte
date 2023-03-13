@@ -99,8 +99,7 @@
 		background: var(--black);
 		color: var(--pink);
 		border: solid 1px var(--pink);
-
-		padding: 1rem;
+		padding: 2rem;
 	}
 
 	input[type='date'] {
