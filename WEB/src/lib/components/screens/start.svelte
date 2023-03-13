@@ -26,15 +26,15 @@
 		transform: translate(-50%, -50%);
 		padding: 0.5rem 1rem;
 
-		background: var(--blue);
+		background: var(--black);
 		color: var(--white);
-		border: solid 1px var(--white);
+		border: solid 1px var(--pink);
 
 		cursor: pointer;
 	}
 
 	h1:hover {
-		border-color: var(--white);
-		color: var(--white);
+		border-color: var(--pink);
+		color: var(--pink);
 	}
 </style>

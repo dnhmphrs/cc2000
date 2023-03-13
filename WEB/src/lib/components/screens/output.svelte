@@ -35,9 +35,9 @@
 		justify-content: space-around;
 		align-items: center;
 
-		background: var(--blue);
+		background: var(--black);
 		color: var(--white);
-		border: solid 1px var(--white);
+		border: solid 1px var(--pink);
 
 		padding: 1rem;
 	}
@@ -45,15 +45,16 @@
 	h1 {
 		text-align: center;
 		padding: 0.5rem 1rem;
-		background: black;
-		border: solid 1px var(--white-50);
-		color: var(--white-50);
+
+		background: var(--black);
+		color: var(--white);
+		border: solid 1px var(--pink);
 
 		cursor: pointer;
 	}
 
 	h1:hover {
-		border-color: var(--white);
-		color: var(--white);
+		border-color: var(--pink);
+		color: var(--pink);
 	}
 </style>

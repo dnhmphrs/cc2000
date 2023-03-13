@@ -96,27 +96,30 @@
 		justify-content: space-around;
 		align-items: center;
 
-		background: var(--blue);
-		color: var(--white);
-		border: solid 1px var(--white);
+		background: var(--black);
+		color: var(--pink);
+		border: solid 1px var(--pink);
 
 		padding: 1rem;
 	}
 
 	input[type='date'] {
+		background: var(--pink);
+		border: solid 1px var(--pink);
 		color: var(--black);
 	}
 
 	.calculate {
-		border: solid 1px var(--white-50);
-		color: var(--white-50);
+		background: var(--black);
+		border: solid 1px var(--pink);
+		color: var(--white);
 		padding: 0.5rem 1rem;
 
 		cursor: pointer;
 	}
 
 	.calculate:hover {
-		border-color: var(--white);
-		color: var(--white);
+		border-color: var(--pink);
+		color: var(--pink);
 	}
 </style>
