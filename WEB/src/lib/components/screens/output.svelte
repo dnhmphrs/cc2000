@@ -35,15 +35,17 @@
 		justify-content: space-around;
 		align-items: center;
 
-		border: solid 1px var(--white-50);
-		color: var(--white-50);
+		background: var(--blue);
+		color: var(--white);
+		border: solid 1px var(--white);
+
 		padding: 1rem;
 	}
 
 	h1 {
 		text-align: center;
 		padding: 0.5rem 1rem;
-
+		background: black;
 		border: solid 1px var(--white-50);
 		color: var(--white-50);
 

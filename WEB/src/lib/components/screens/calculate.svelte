@@ -96,8 +96,10 @@
 		justify-content: space-around;
 		align-items: center;
 
-		border: solid 1px var(--white-50);
+		background: var(--blue);
 		color: var(--white);
+		border: solid 1px var(--white);
+
 		padding: 1rem;
 	}
 

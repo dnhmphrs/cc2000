@@ -49,7 +49,7 @@
 	});
 </script>
 
-<!-- <svelte:component this={Geometry} /> -->
+<svelte:component this={Geometry} />
 
 <main>
 	<slot />

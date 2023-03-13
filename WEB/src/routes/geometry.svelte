@@ -4,6 +4,9 @@
 	import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 	import * as THREE from 'three';
 
+	import AsciiRenderer from '$lib/components/effects/ascii-renderer.js';
+	// console.log(AsciiRenderer);
+
 	let container, pc, id;
 	onDestroy(() => cancelAnimationFrame(id));
 
@@ -21,13 +24,46 @@
 
 	let firstLoad = true;
 
+	var asciiRenderer;
+	var charSet =
+		'0100011001101111011100100010000001000111011011110' +
+		'1100100001000000111001101101111001000000110110001' +
+		'1011110111011001100101011001000010000001110100011' +
+		'0100001100101001000000111011101101111011100100110' +
+		'1100011001000010000001110100011010000110000101110' +
+		'1000010000001101000011001010010000001100111011000' +
+		'0101110110011001010010000001101000011010010111001' +
+		'1001000000110111101101110011001010010000001100001' +
+		'0110111001100100001000000110111101101110011011000' +
+		'1111001001000000101001101101111011011100010110000' +
+		'1000000111010001101000011000010111010000100000011' +
+		'1011101101000011011110110010101110110011001010111' +
+		'0010001000000110001001100101011011000110100101100' +
+		'1010111011001100101011100110010000001101001011011' +
+		'1000100000011010000110100101101101001000000111001' +
+		'1011010000110000101101100011011000010000001101110' +
+		'0110111101110100001000000111000001100101011100100' +
+		'1101001011100110110100000100000011000100111010101' +
+		'1101000010000001101000011000010111011001100101001' +
+		'0000001100101011101000110010101110010011011100110' +
+		'0001011011000010000001101100011010010110011001100' +
+		'10100100000';
+
 	// Setting up the renderer. This will be called later to render scene with the camera setup above
-	let renderer = new THREE.WebGLRenderer({ antialias: false });
-	renderer.setPixelRatio(window.devicePixelRatio);
-	renderer.setSize(width, height);
-	renderer.setClearColor(0x0033bb, 0);
+	let renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
+	// renderer.setPixelRatio(window.devicePixelRatio);
+	// renderer.setSize(width, height);
+	// renderer.setClearColor(0x0033bb, 0);
 	onMount(() => {
 		container.appendChild(renderer.domElement);
+
+		asciiRenderer = new AsciiRenderer(renderer, {
+			charSet: charSet,
+			fontSize: 12,
+			opacity: 0.7
+		});
+
+		asciiRenderer.setSize(width, height);
 
 		setTimeout(() => {
 			window.dispatchEvent(new KeyboardEvent('keydown', { key: 's' }));
@@ -35,15 +71,18 @@
 	});
 
 	// let controls = new OrbitControls(camera, renderer.domElement);
-	// flyControls.dragToLook = true;
-	// flyControls.movementSpeed = 100;
-	// flyControls.rollSpeed = 0.05;
-	// flyControls.autoForward = true;
-	// flyControls.update(0.001);
+	// controls.enablePan = false;
+	// controls.enableZoom = false;
+	// controls.minAzimuthAngle = -Math.PI / 4;
+	// controls.maxAzimuthAngle = (Math.PI * 3) / 4;
+	// controls.enableDamping = true;
+	// controls.dampingFactor = 0.07;
+	// controls.rotateSpeed = 0.05;
+	// controls.update();
 
 	{
-		const color = 0x0033bb;
-		const density = 0.02;
+		const color = 0x000000;
+		const density = 0.01;
 		scene.fog = new THREE.FogExp2(color, density);
 	}
 
@@ -55,14 +94,15 @@
 	);
 	scene.add(sphere);
 
-	sphere.position.z += 2.5;
-
 	const outerSphere = new THREE.Mesh(
 		new THREE.SphereGeometry(11, 32, 16),
 		// new THREE.MeshPhysicalMaterial({ roughness: 0.2, transmission: 0.8 })
 		new THREE.MeshToonMaterial({ color: 0xffc0cb, transparent: true, opacity: 0.5 })
 	);
 	scene.add(outerSphere);
+
+	sphere.position.z = -100;
+	outerSphere.position.z = -100;
 
 	const light = new THREE.HemisphereLight(0xf9d6ff, 0x0033bb, 2);
 	scene.add(light);
@@ -88,33 +128,29 @@
 	scene.add(spermGroup);
 	spermGroup.position.y = -0.1;
 
-	let macGroup = new THREE.Group();
-	gltfLoader.load('/mac.glb', (glb) => {
-		mac = glb.scene.children[0];
+	// let macGroup = new THREE.Group();
+	// gltfLoader.load('/mac.glb', (glb) => {
+	// 	mac = glb.scene.children[0];
 
-		mac.traverse(function (child) {
-			if (child.material) {
-				child.material = new THREE.MeshPhongMaterial({
-					color: 0xffffff,
-					wireframe: true,
-					vertexColors: THREE.VertexColors
-				});
-			}
-		});
+	// 	mac.traverse(function (child) {
+	// 		if (child.material) {
+	// 			child.material = new THREE.MeshPhongMaterial({
+	// 				color: 0xffffff,
+	// 				wireframe: false,
+	// 				vertexColors: THREE.VertexColors
+	// 			});
+	// 		}
+	// 	});
 
-		// sperm.position.z = 100;
-		// mac.rotation.x += 0.1;
-		// mac.position.y -= 0.695;
-		// mac.position.z += 4;
+	// 	// mac.scale.set(0.2, 0.2, 0.2);
 
-		// mac.scale.set(0.2, 0.2, 0.2);
+	// 	macGroup.add(mac);
+	// });
 
-		macGroup.add(mac);
-	});
-
-	scene.add(macGroup);
-	macGroup.position.z = 5;
-	macGroup.position.y = -28;
+	// scene.add(macGroup);
+	// macGroup.position.z = 5;
+	// macGroup.position.z = -408;
+	// macGroup.position.y = -28;
 
 	// ---------------------------------------------------------------------------
 
@@ -122,48 +158,47 @@
 		spermGroup.position.z = camera.position.z;
 	};
 
-	const clock = new THREE.Clock();
-	let previousTime = 0;
+	// const clock = new THREE.Clock();
+	// let previousTime = 0;
 
 	let render = function () {
 		renderer.render(scene, camera);
 		id = requestAnimationFrame(render);
 		// controls.update();
 
-		const elapsedTime = clock.getElapsedTime();
-		const deltaTime = elapsedTime - previousTime;
-		previousTime = elapsedTime;
+		// const elapsedTime = clock.getElapsedTime();
+		// const deltaTime = elapsedTime - previousTime;
+		// previousTime = elapsedTime;
+
+		//sphere.rotation.x += 0.01;
+		// macGroup.position.z += 1;
 
 		// if ($go) {
 		// 	camera.position.z -= deltaTime * 20;
 		// 	camera.rotation.z += deltaTime / 5;
 		// }
 
+		// camera.position.z -= deltaTime * 20;
+		camera.position.z -= 0.2;
+
 		// if (camera.position.z <= 10) {
 		// 	renderer.setClearColor(0x000000, 1);
 		// }
 
-		if (camera.position.z <= 0) {
-			camera.position.z = Math.random() * 30 + 70;
-			camera.foc = 35;
-
-			camera.position.y = 0;
-			camera.position.x = 0;
-
-			camera.fov += 60;
-			camera.lookAt(0, 0, 0);
+		if (camera.position.z <= -100) {
+			camera.position.z = 100;
 		}
 
-		// spermGroup.rotation.z -= 0.15;
+		spermGroup.rotation.z -= 0.15;
 		// spermGroup.rotation.z -= (-spermGroup.rotation.z / Math.PI / 24 + 0.2) / 1.2;
 		// if (spermGroup.rotation.z <= -2 * Math.PI) {
 		// 	spermGroup.rotation.z = 0;
 		// }
 
-		// followCamera();
+		followCamera();
 		spermGroup.position.z -= 5.5;
 
-		// spermGroup.position.z -= 3;
+		spermGroup.position.z -= 0;
 
 		// if (firstLoad && camera.position.z >= 100) {
 		// 	camera.fov = 160 - camera.position.z;
@@ -171,13 +206,6 @@
 		// } else {
 		// 	firstLoad = false;
 		// }
-
-		if (camera.position.z <= 50) {
-			camera.fov = 100 - camera.position.z - 20;
-			camera.updateProjectionMatrix();
-		} else {
-			firstLoad = false;
-		}
 
 		// this block fixes a bug where the sperm is brielfy visible after entering the
 		// if (camera.position.z <= 10.5) {
@@ -192,7 +220,8 @@
 			let width = window.innerWidth;
 			camera.aspect = width / height;
 			camera.updateProjectionMatrix();
-			renderer.setSize(width, height);
+			// renderer.setSize(width, height);
+			asciiRenderer.setSize(width, height);
 		},
 		false
 	);

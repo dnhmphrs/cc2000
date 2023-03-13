@@ -24,11 +24,11 @@
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		/* background: black; */
 		padding: 0.5rem 1rem;
 
-		border: solid 1px var(--white-50);
-		color: var(--white-50);
+		background: var(--blue);
+		color: var(--white);
+		border: solid 1px var(--white);
 
 		cursor: pointer;
 	}
