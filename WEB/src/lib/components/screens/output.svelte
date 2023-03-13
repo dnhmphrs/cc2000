@@ -38,7 +38,7 @@
 		border: solid 1px var(--pink);
 
 		padding: 2rem;
-		transform: translateY(-5%);
+		transform: translateY(-10%);
 	}
 
 	iframe {
