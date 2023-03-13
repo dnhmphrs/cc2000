@@ -181,6 +181,10 @@
 		// camera.position.z -= deltaTime * 20;
 		camera.position.z -= 0.2;
 
+		if (macGroup.rotation.y <= 2 * Math.PI) {
+			macGroup.rotation.y += 0.006;
+		}
+
 		// if (camera.position.z <= 10) {
 		// 	renderer.setClearColor(0x000000, 1);
 		// }
