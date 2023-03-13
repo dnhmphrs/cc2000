@@ -81,28 +81,28 @@
 	// controls.update();
 
 	{
-		const color = 0x000000;
+		const color = 0x0b0b0b;
 		const density = 0.01;
 		scene.fog = new THREE.FogExp2(color, density);
 	}
 
 	// ---------------------------------------------------------------------------
 
-	const sphere = new THREE.Mesh(
-		new THREE.SphereGeometry(7, 32, 16),
-		new THREE.MeshToonMaterial({ color: 0xffc0cb })
-	);
-	scene.add(sphere);
+	// const sphere = new THREE.Mesh(
+	// 	new THREE.SphereGeometry(7, 32, 16),
+	// 	new THREE.MeshToonMaterial({ color: 0xffc0cb })
+	// );
+	// scene.add(sphere);
 
-	const outerSphere = new THREE.Mesh(
-		new THREE.SphereGeometry(11, 32, 16),
-		// new THREE.MeshPhysicalMaterial({ roughness: 0.2, transmission: 0.8 })
-		new THREE.MeshToonMaterial({ color: 0xffc0cb, transparent: true, opacity: 0.5 })
-	);
-	scene.add(outerSphere);
+	// const outerSphere = new THREE.Mesh(
+	// 	new THREE.SphereGeometry(11, 32, 16),
+	// 	// new THREE.MeshPhysicalMaterial({ roughness: 0.2, transmission: 0.8 })
+	// 	new THREE.MeshToonMaterial({ color: 0xffc0cb, transparent: true, opacity: 0.5 })
+	// );
+	// scene.add(outerSphere);
 
-	sphere.position.z = -100;
-	outerSphere.position.z = -100;
+	// sphere.position.z = -100;
+	// outerSphere.position.z = -100;
 
 	const light = new THREE.HemisphereLight(0xf9d6ff, 0x0033bb, 2);
 	scene.add(light);
@@ -128,29 +128,29 @@
 	scene.add(spermGroup);
 	spermGroup.position.y = -0.1;
 
-	// let macGroup = new THREE.Group();
-	// gltfLoader.load('/mac.glb', (glb) => {
-	// 	mac = glb.scene.children[0];
+	let macGroup = new THREE.Group();
+	gltfLoader.load('/mac.glb', (glb) => {
+		mac = glb.scene.children[0];
 
-	// 	mac.traverse(function (child) {
-	// 		if (child.material) {
-	// 			child.material = new THREE.MeshPhongMaterial({
-	// 				color: 0xffffff,
-	// 				wireframe: false,
-	// 				vertexColors: THREE.VertexColors
-	// 			});
-	// 		}
-	// 	});
+		mac.traverse(function (child) {
+			if (child.material) {
+				child.material = new THREE.MeshPhongMaterial({
+					color: 0xd0d0d0,
+					wireframe: true,
+					vertexColors: THREE.VertexColors
+				});
+			}
+		});
 
-	// 	// mac.scale.set(0.2, 0.2, 0.2);
+		// mac.scale.set(0.2, 0.2, 0.2);
 
-	// 	macGroup.add(mac);
-	// });
+		macGroup.add(mac);
+	});
 
-	// scene.add(macGroup);
-	// macGroup.position.z = 5;
-	// macGroup.position.z = -408;
-	// macGroup.position.y = -28;
+	scene.add(macGroup);
+	macGroup.position.z = 5;
+	macGroup.position.z = -140;
+	macGroup.position.y = -28;
 
 	// ---------------------------------------------------------------------------
 
@@ -185,7 +185,7 @@
 		// 	renderer.setClearColor(0x000000, 1);
 		// }
 
-		if (camera.position.z <= -100) {
+		if (camera.position.z <= -200) {
 			camera.position.z = 100;
 		}
 
