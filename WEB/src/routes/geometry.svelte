@@ -120,7 +120,7 @@
 	sphere.position.z = -150;
 	outerSphere.position.z = -150;
 
-	const light = new THREE.HemisphereLight(0xf9d6ff, 0x0033bb, 3);
+	const light = new THREE.HemisphereLight(0xf9d6ff, 0x0033bb, 2.5);
 	scene.add(light);
 
 	// ---------------------------------------------------------------------------
