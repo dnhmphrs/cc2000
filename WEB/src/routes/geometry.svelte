@@ -200,7 +200,7 @@
 		// }
 
 		// camera.position.z -= deltaTime * 20;
-		camera.position.z -= deltaTime * 12.725;
+		camera.position.z -= deltaTime * 12.73;
 		gridHelper0.rotation.y -= deltaTime / 10;
 		gridHelper1.rotation.y += deltaTime / 10;
 		gridHelper2.rotation.y -= deltaTime / 10;
