@@ -17,7 +17,7 @@
 	let width = window.innerWidth;
 
 	// Setting up a camera
-	let camera = new THREE.PerspectiveCamera(35, width / height, 0.5, 400);
+	let camera = new THREE.PerspectiveCamera(30, width / height, 0.5, 400);
 	camera.position.z = 100;
 
 	let sperm, mac;
@@ -105,15 +105,15 @@
 	scene.add(gridHelper3);
 
 	const sphere = new THREE.Mesh(
-		new THREE.SphereGeometry(7, 32, 16),
+		new THREE.SphereGeometry(14, 32, 16),
 		new THREE.MeshToonMaterial({ color: 0xffc0cb })
 	);
 	scene.add(sphere);
 
 	const outerSphere = new THREE.Mesh(
-		new THREE.SphereGeometry(11, 32, 16),
+		new THREE.SphereGeometry(22, 32, 16),
 		// new THREE.MeshPhysicalMaterial({ roughness: 0.2, transmission: 0.8 })
-		new THREE.MeshToonMaterial({ color: 0xffc0cb, transparent: true, opacity: 0.5 })
+		new THREE.MeshPhysicalMaterial({ color: 0xffc0cb, transparent: true, opacity: 0.5 })
 	);
 	scene.add(outerSphere);
 
@@ -169,7 +169,7 @@
 	// ---------------------------------------------------------------------------
 
 	let followCamera = () => {
-		spermGroup.position.z = camera.position.z;
+		spermGroup.position.z = camera.position.z - 5.5;
 	};
 
 	// const clock = new THREE.Clock();
@@ -218,9 +218,6 @@
 		// }
 
 		followCamera();
-		spermGroup.position.z -= 5.5;
-
-		spermGroup.position.z -= 0;
 
 		// if (firstLoad && camera.position.z >= 100) {
 		// 	camera.fov = 160 - camera.position.z;
