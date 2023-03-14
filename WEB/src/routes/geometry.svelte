@@ -22,8 +22,6 @@
 
 	let sperm, mac;
 
-	let firstLoad = true;
-
 	var asciiRenderer;
 	var charSet =
 		'0100011001101111011100100010000001000111011011110' +
@@ -59,8 +57,8 @@
 
 		asciiRenderer = new AsciiRenderer(renderer, {
 			charSet: charSet,
-			fontSize: 8,
-			opacity: 0.8
+			fontSize: 4,
+			opacity: 0.25
 		});
 
 		asciiRenderer.setSize(width, height);
@@ -81,8 +79,8 @@
 	// controls.update();
 
 	{
-		const color = 0x0b0b0b;
-		const density = 0.01;
+		const color = 0x232323;
+		const density = 0.0085;
 		scene.fog = new THREE.FogExp2(color, density);
 	}
 
@@ -122,7 +120,7 @@
 	sphere.position.z = -150;
 	outerSphere.position.z = -150;
 
-	const light = new THREE.HemisphereLight(0xf9d6ff, 0x0033bb, 2);
+	const light = new THREE.HemisphereLight(0xf9d6ff, 0x0033bb, 3);
 	scene.add(light);
 
 	// ---------------------------------------------------------------------------

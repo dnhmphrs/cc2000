@@ -33,7 +33,7 @@
 		justify-content: space-around;
 		align-items: center;
 
-		background: var(--black);
+		background: var(--true-black);
 		color: var(--white);
 		border: solid 1px var(--pink);
 
@@ -50,7 +50,7 @@
 		flex-shrink: 1;
 		padding: 0.5rem 1rem;
 
-		background: var(--black);
+		background: var(--true-black);
 		color: var(--white);
 		border: solid 1px var(--pink);
 

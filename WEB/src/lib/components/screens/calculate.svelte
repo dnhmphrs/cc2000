@@ -96,7 +96,7 @@
 		justify-content: space-around;
 		align-items: center;
 
-		background: var(--black);
+		background: var(--true-black);
 		color: var(--pink);
 		border: solid 1px var(--pink);
 		padding: 2rem;
@@ -111,7 +111,7 @@
 	input[type='range'] {
 		-webkit-appearance: none;
 		cursor: pointer;
-		background: var(--black);
+		background: var(--true-black);
 	}
 
 	input[type='range']::-webkit-slider-runnable-track {
@@ -135,7 +135,7 @@
 	}
 
 	.calculate {
-		background: var(--black);
+		background: var(--blactrue-blackk);
 		border: solid 1px var(--pink);
 		color: var(--white);
 		padding: 0.5rem 1rem;
