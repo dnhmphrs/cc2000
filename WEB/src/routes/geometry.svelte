@@ -172,17 +172,17 @@
 		spermGroup.position.z = camera.position.z - 5.5;
 	};
 
-	// const clock = new THREE.Clock();
-	// let previousTime = 0;
+	const clock = new THREE.Clock();
+	let previousTime = 0;
 
 	let render = function () {
 		renderer.render(scene, camera);
 		id = requestAnimationFrame(render);
 		// controls.update();
 
-		// const elapsedTime = clock.getElapsedTime();
-		// const deltaTime = elapsedTime - previousTime;
-		// previousTime = elapsedTime;
+		const elapsedTime = clock.getElapsedTime();
+		const deltaTime = elapsedTime - previousTime;
+		previousTime = elapsedTime;
 
 		//sphere.rotation.x += 0.01;
 		// macGroup.position.z += 1;
@@ -193,10 +193,10 @@
 		// }
 
 		// camera.position.z -= deltaTime * 20;
-		camera.position.z -= 0.2;
-		gridHelper.rotation.y += 0.001;
-		gridHelper2.rotation.y -= 0.001;
-		gridHelper3.rotation.y += 0.001;
+		camera.position.z -= deltaTime * 12.75;
+		gridHelper.rotation.y += deltaTime / 10;
+		gridHelper2.rotation.y -= deltaTime / 10;
+		gridHelper3.rotation.y += deltaTime / 10;
 
 		// if (macGroup.rotation.y <= 0) {
 		// 	macGroup.rotation.y += 0.003;
@@ -211,7 +211,8 @@
 			// macGroup.rotation.y = -Math.PI;
 		}
 
-		spermGroup.rotation.z -= 0.15;
+		spermGroup.rotation.z -= deltaTime * 10;
+
 		// spermGroup.rotation.z -= (-spermGroup.rotation.z / Math.PI / 24 + 0.2) / 1.2;
 		// if (spermGroup.rotation.z <= -2 * Math.PI) {
 		// 	spermGroup.rotation.z = 0;
