@@ -80,7 +80,7 @@
 
 	{
 		const color = 0x232323;
-		const density = 0.0085;
+		const density = 0.009;
 		scene.fog = new THREE.FogExp2(color, density);
 	}
 
@@ -89,10 +89,15 @@
 	const size = 100;
 	const divisions = 10;
 
-	const gridHelper = new THREE.GridHelper(size, divisions, 0xf9d6ff, 0xf9d6ff);
-	gridHelper.rotation.x += Math.PI / 2;
-	gridHelper.position.z -= 200;
-	scene.add(gridHelper);
+	const gridHelper0 = new THREE.GridHelper(size, divisions, 0xf9d6ff, 0xf9d6ff);
+	gridHelper0.rotation.x += Math.PI / 2;
+	gridHelper0.position.z -= 300;
+	scene.add(gridHelper0);
+
+	const gridHelper1 = new THREE.GridHelper(size, divisions, 0xf9d6ff, 0xf9d6ff);
+	gridHelper1.rotation.x += Math.PI / 2;
+	gridHelper1.position.z -= 200;
+	scene.add(gridHelper1);
 
 	const gridHelper2 = new THREE.GridHelper(size, divisions, 0xf9d6ff, 0xf9d6ff);
 	gridHelper2.rotation.x += Math.PI / 2;
@@ -194,7 +199,8 @@
 
 		// camera.position.z -= deltaTime * 20;
 		camera.position.z -= deltaTime * 12.75;
-		gridHelper.rotation.y += deltaTime / 10;
+		gridHelper0.rotation.y -= deltaTime / 10;
+		gridHelper1.rotation.y += deltaTime / 10;
 		gridHelper2.rotation.y -= deltaTime / 10;
 		gridHelper3.rotation.y += deltaTime / 10;
 
