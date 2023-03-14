@@ -49,9 +49,11 @@
 
 	// Setting up the renderer. This will be called later to render scene with the camera setup above
 	let renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
+	renderer.setClearColor(0x232323, 1);
+
 	// renderer.setPixelRatio(window.devicePixelRatio);
 	// renderer.setSize(width, height);
-	// renderer.setClearColor(0x0033bb, 0);
+
 	onMount(() => {
 		container.appendChild(renderer.domElement);
 
