@@ -215,7 +215,11 @@
 		// }
 
 		if (camera.position.z <= -200) {
+			gridHelper1.rotation.y = 0;
+			gridHelper2.rotation.y = 0;
+			gridHelper3.rotation.y = 0;
 			camera.position.z = 100;
+			gridHelper0.rotation.y = 0;
 			// macGroup.rotation.y = -Math.PI;
 		}
 
