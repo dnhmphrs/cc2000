@@ -219,7 +219,7 @@
 			// gridHelper2.rotation.y = Math.PI / 2;
 			// gridHelper3.rotation.y = Math.PI / 2;
 			// gridHelper3.rotation.y = Math.PI / 2;
-			camera.position.z = 200;
+			camera.position.z = 100;
 			// macGroup.rotation.y = -Math.PI;
 		}
 
