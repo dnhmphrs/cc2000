@@ -111,11 +111,6 @@
 	gridHelper3.position.z = 0;
 	scene.add(gridHelper3);
 
-	const gridHelper4 = new THREE.GridHelper(size, divisions, 0xf9d6ff, 0xf9d6ff);
-	gridHelper4.rotation.x += Math.PI / 2;
-	gridHelper4.position.z = 100;
-	scene.add(gridHelper4);
-
 	const sphere = new THREE.Mesh(
 		new THREE.SphereGeometry(14, 32, 16),
 		new THREE.MeshToonMaterial({ color: 0xffc0cb })
@@ -205,12 +200,11 @@
 		// }
 
 		// camera.position.z -= deltaTime * 20;
-		camera.position.z -= deltaTime * 12.725;
+		camera.position.z -= deltaTime * Math.PI * 4;
 		gridHelper0.rotation.y -= deltaTime / 10;
 		gridHelper1.rotation.y += deltaTime / 10;
 		gridHelper2.rotation.y -= deltaTime / 10;
 		gridHelper3.rotation.y += deltaTime / 10;
-		gridHelper4.rotation.y -= deltaTime / 10;
 
 		// if (macGroup.rotation.y <= 0) {
 		// 	macGroup.rotation.y += 0.003;
@@ -221,12 +215,11 @@
 		// }
 
 		if (camera.position.z <= -200) {
-			gridHelper1.rotation.y = Math.PI / 2;
-			gridHelper2.rotation.y = Math.PI / 2;
-			gridHelper3.rotation.y = Math.PI / 2;
-			gridHelper3.rotation.y = Math.PI / 2;
+			// gridHelper1.rotation.y = Math.PI / 2;
+			// gridHelper2.rotation.y = Math.PI / 2;
+			// gridHelper3.rotation.y = Math.PI / 2;
+			// gridHelper3.rotation.y = Math.PI / 2;
 			camera.position.z = 200;
-			gridHelper0.rotation.y = Math.PI / 2;
 			// macGroup.rotation.y = -Math.PI;
 		}
 
