@@ -182,6 +182,8 @@
 	const clock = new THREE.Clock();
 	let previousTime = 0;
 
+	let iteration = 0;
+
 	let render = function () {
 		renderer.render(scene, camera);
 		id = requestAnimationFrame(render);
@@ -200,7 +202,7 @@
 		// }
 
 		// camera.position.z -= deltaTime * 20;
-		camera.position.z -= deltaTime * 12.726;
+		camera.position.z -= deltaTime * 12.725;
 		gridHelper0.rotation.y -= deltaTime / 10;
 		gridHelper1.rotation.y += deltaTime / 10;
 		gridHelper2.rotation.y -= deltaTime / 10;
@@ -215,11 +217,13 @@
 		// }
 
 		if (camera.position.z <= -200) {
-			// gridHelper1.rotation.y = Math.PI / 2;
-			// gridHelper2.rotation.y = Math.PI / 2;
-			// gridHelper3.rotation.y = Math.PI / 2;
-			// gridHelper3.rotation.y = Math.PI / 2;
+			let even_iteration = iteration % 2 == 0;
+			gridHelper1.rotation.y = even_iteration ? Math.PI / 4 : 0;
+			gridHelper2.rotation.y = even_iteration ? Math.PI / 4 : 0;
+			gridHelper3.rotation.y = even_iteration ? Math.PI / 4 : 0;
+
 			camera.position.z = 100;
+			iteration += 1;
 			// macGroup.rotation.y = -Math.PI;
 		}
 
