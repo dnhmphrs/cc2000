@@ -24,32 +24,32 @@
 
 	var asciiRenderer;
 	var charSet =
-		'0100011001101111011100100010000001000111011011110' +
-		'1100100001000000111001101101111001000000110110001' +
-		'1011110111011001100101011001000010000001110100011' +
-		'0100001100101001000000111011101101111011100100110' +
-		'1100011001000010000001110100011010000110000101110' +
-		'1000010000001101000011001010010000001100111011000' +
-		'0101110110011001010010000001101000011010010111001' +
-		'1001000000110111101101110011001010010000001100001' +
-		'0110111001100100001000000110111101101110011011000' +
-		'1111001001000000101001101101111011011100010110000' +
-		'1000000111010001101000011000010111010000100000011' +
+		'010001100110111101110010001d0d00d1000111011011110' +
+		'1100100001d0d00d111001101101111001d0d00d110110001' +
+		'101111011101100110010101100100001d0d00d1110100011' +
+		'0100001100101001d0d00d111011101101111011100100110' +
+		'110001100100001d0d00d1110100011010000110000101110' +
+		'100001d0d00d110100001100101001d0d00d1100111011000' +
+		'010111011001100101001d0d00d1101000011010010111001' +
+		'1001d0d00d11011110110111001100101001d0d00d1100001' +
+		'0110111001100100001d0d00d110111101101110011011000' +
+		'1111001001d0d00d101001101101111011011100010110000' +
+		'1d0d00d1110100011010000110000101110100001d0d00d11' +
 		'1011101101000011011110110010101110110011001010111' +
-		'0010001000000110001001100101011011000110100101100' +
-		'1010111011001100101011100110010000001101001011011' +
-		'1000100000011010000110100101101101001000000111001' +
-		'1011010000110000101101100011011000010000001101110' +
-		'0110111101110100001000000111000001100101011100100' +
-		'1101001011100110110100000100000011000100111010101' +
-		'1101000010000001101000011000010111011001100101001' +
-		'0000001100101011101000110010101110010011011100110' +
-		'0001011011000010000001101100011010010110011001100' +
+		'0010001d0d00d110001001100101011011000110100101100' +
+		'101011101100110010101110011001d0d00d1101001011011' +
+		'10001d0d00d11010000110100101101101001d0d00d111001' +
+		'101101000011000010110110001101100001d0d00d1101110' +
+		'0110111101110100001d0d00d111000001100101011100100' +
+		'11010010111001101101000001d0d00d11000100111010101' +
+		'110100001d0d00d1101000011000010111011001100101001' +
+		'd0d00d1100101011101000110010101110010011011100110' +
+		'000101101100001d0d00d1101100011010010110011001100' +
 		'10100100000';
 
 	// Setting up the renderer. This will be called later to render scene with the camera setup above
 	let renderer = new THREE.WebGLRenderer({ antialias: false, alpha: false });
-	renderer.setClearColor(0xf0f0f0, 1);
+	renderer.setClearColor(0x232323, 1);
 
 	// renderer.setPixelRatio(window.devicePixelRatio);
 	// renderer.setSize(width, height);
@@ -82,7 +82,7 @@
 	// controls.update();
 
 	{
-		const color = 0xf0f0f0;
+		const color = 0x232323;
 		const density = 0.009;
 		scene.fog = new THREE.FogExp2(color, density);
 	}
@@ -92,43 +92,43 @@
 	const size = 100;
 	const divisions = 10;
 
-	const gridHelper0 = new THREE.GridHelper(size, divisions, 0x232323, 0x232323);
+	const gridHelper0 = new THREE.GridHelper(size, divisions, 0xf0f0f0, 0xf0f0f0);
 	gridHelper0.rotation.x += Math.PI / 2;
 	gridHelper0.position.z = -300;
 	scene.add(gridHelper0);
 
-	const gridHelper1 = new THREE.GridHelper(size, divisions, 0x232323, 0x232323);
+	const gridHelper1 = new THREE.GridHelper(size, divisions, 0xf0f0f0, 0xf0f0f0);
 	gridHelper1.rotation.x += Math.PI / 2;
 	gridHelper1.position.z = -200;
 	scene.add(gridHelper1);
 
-	const gridHelper2 = new THREE.GridHelper(size, divisions, 0x232323, 0x232323);
+	const gridHelper2 = new THREE.GridHelper(size, divisions, 0xf0f0f0, 0xf0f0f0);
 	gridHelper2.rotation.x += Math.PI / 2;
 	gridHelper2.position.z = -100;
 	scene.add(gridHelper2);
 
-	const gridHelper3 = new THREE.GridHelper(size, divisions, 0x232323, 0x232323);
+	const gridHelper3 = new THREE.GridHelper(size, divisions, 0xf0f0f0, 0xf0f0f0);
 	gridHelper3.rotation.x += Math.PI / 2;
 	gridHelper3.position.z = 0;
 	scene.add(gridHelper3);
 
 	const sphere = new THREE.Mesh(
 		new THREE.SphereGeometry(14, 32, 16),
-		new THREE.MeshToonMaterial({ color: 0xf0f0f0 })
+		new THREE.MeshToonMaterial({ color: 0xd0d0d0 })
 	);
 	scene.add(sphere);
 
 	const outerSphere = new THREE.Mesh(
 		new THREE.SphereGeometry(22, 32, 16),
 		// new THREE.MeshPhysicalMaterial({ roughness: 0.2, transmission: 0.8 })
-		new THREE.MeshPhysicalMaterial({ color: 0xf0f0f0, transparent: true, opacity: 0.5 })
+		new THREE.MeshPhysicalMaterial({ color: 0xd0d0d0, transparent: true, opacity: 0.5 })
 	);
 	scene.add(outerSphere);
 
 	sphere.position.z = -150;
 	outerSphere.position.z = -150;
 
-	const light = new THREE.HemisphereLight(0xf0f0f0, 0xf0f0f0, 2.5);
+	const light = new THREE.HemisphereLight(0xd0d0d0, 0x232323, 1.5);
 	scene.add(light);
 
 	// ---------------------------------------------------------------------------
@@ -149,7 +149,7 @@
 		sperm.traverse(function (child) {
 			if (child.material) {
 				child.material = new THREE.MeshToonMaterial({
-					color: 0x000000
+					color: 0xf0f0f0
 				});
 			}
 		});
@@ -159,28 +159,6 @@
 
 	scene.add(spermGroup);
 	spermGroup.position.y = -0.1;
-
-	let macGroup = new THREE.Group();
-	gltfLoader.load('/mac.glb', (glb) => {
-		mac = glb.scene.children[0];
-
-		// mac.traverse(function (child) {
-		// 	if (child.material) {
-		// 		child.material = new THREE.MeshPhongMaterial({
-		// 			color: 0xd0d0d0,
-		// 			wireframe: true,
-		// 			vertexColors: THREE.VertexColors
-		// 		});
-		// 	}
-		// });
-
-		// macGroup.add(mac);
-	});
-
-	scene.add(macGroup);
-	macGroup.position.z = 5;
-	macGroup.position.z = -150;
-	macGroup.position.y = -28;
 
 	// ---------------------------------------------------------------------------
 
@@ -224,7 +202,7 @@
 		// }
 
 		// if (camera.position.z <= 10) {
-		// 	renderer.setClearColor(0x000000, 1);
+		// 	renderer.setClearColor(0xd0d00d, 1);
 		// }
 
 		if (camera.position.z <= -200) {
@@ -238,7 +216,7 @@
 			// macGroup.rotation.y = -Math.PI;
 		}
 
-		spermGroup.rotation.z -= deltaTime * 10;
+		spermGroup.rotation.z = -elapsedTime * 10;
 
 		// spermGroup.rotation.z -= (-spermGroup.rotation.z / Math.PI / 24 + 0.2) / 1.2;
 		// if (spermGroup.rotation.z <= -2 * Math.PI) {
