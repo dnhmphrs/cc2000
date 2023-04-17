@@ -4,7 +4,7 @@
 	import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 	import * as THREE from 'three';
 
-	import AsciiRenderer from '$lib/components/effects/ascii-renderer.js';
+	// import AsciiRenderer from '$lib/components/effects/ascii-renderer.js';
 	// console.log(AsciiRenderer);
 
 	let container, pc, id;
@@ -48,8 +48,8 @@
 		'10100100000';
 
 	// Setting up the renderer. This will be called later to render scene with the camera setup above
-	let renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
-	renderer.setClearColor(0x232323, 1);
+	let renderer = new THREE.WebGLRenderer({ antialias: false, alpha: false });
+	renderer.setClearColor(0xf0f0f0, 1);
 
 	// renderer.setPixelRatio(window.devicePixelRatio);
 	// renderer.setSize(width, height);
@@ -57,13 +57,14 @@
 	onMount(() => {
 		container.appendChild(renderer.domElement);
 
-		asciiRenderer = new AsciiRenderer(renderer, {
-			charSet: charSet,
-			fontSize: 4,
-			opacity: 0.25
-		});
+		// asciiRenderer = new AsciiRenderer(renderer, {
+		// 	charSet: charSet,
+		// 	fontSize: 1,
+		// 	opacity: 0.1
+		// });
 
-		asciiRenderer.setSize(width, height);
+		// asciiRenderer.setSize(width, height);
+		renderer.setSize(width, height);
 
 		setTimeout(() => {
 			window.dispatchEvent(new KeyboardEvent('keydown', { key: 's' }));
@@ -81,7 +82,7 @@
 	// controls.update();
 
 	{
-		const color = 0x232323;
+		const color = 0xf0f0f0;
 		const density = 0.009;
 		scene.fog = new THREE.FogExp2(color, density);
 	}
@@ -91,43 +92,43 @@
 	const size = 100;
 	const divisions = 10;
 
-	const gridHelper0 = new THREE.GridHelper(size, divisions, 0xf9d6ff, 0xf9d6ff);
+	const gridHelper0 = new THREE.GridHelper(size, divisions, 0x232323, 0x232323);
 	gridHelper0.rotation.x += Math.PI / 2;
 	gridHelper0.position.z = -300;
 	scene.add(gridHelper0);
 
-	const gridHelper1 = new THREE.GridHelper(size, divisions, 0xf9d6ff, 0xf9d6ff);
+	const gridHelper1 = new THREE.GridHelper(size, divisions, 0x232323, 0x232323);
 	gridHelper1.rotation.x += Math.PI / 2;
 	gridHelper1.position.z = -200;
 	scene.add(gridHelper1);
 
-	const gridHelper2 = new THREE.GridHelper(size, divisions, 0xf9d6ff, 0xf9d6ff);
+	const gridHelper2 = new THREE.GridHelper(size, divisions, 0x232323, 0x232323);
 	gridHelper2.rotation.x += Math.PI / 2;
 	gridHelper2.position.z = -100;
 	scene.add(gridHelper2);
 
-	const gridHelper3 = new THREE.GridHelper(size, divisions, 0xf9d6ff, 0xf9d6ff);
+	const gridHelper3 = new THREE.GridHelper(size, divisions, 0x232323, 0x232323);
 	gridHelper3.rotation.x += Math.PI / 2;
 	gridHelper3.position.z = 0;
 	scene.add(gridHelper3);
 
 	const sphere = new THREE.Mesh(
 		new THREE.SphereGeometry(14, 32, 16),
-		new THREE.MeshToonMaterial({ color: 0xffc0cb })
+		new THREE.MeshToonMaterial({ color: 0xf0f0f0 })
 	);
 	scene.add(sphere);
 
 	const outerSphere = new THREE.Mesh(
 		new THREE.SphereGeometry(22, 32, 16),
 		// new THREE.MeshPhysicalMaterial({ roughness: 0.2, transmission: 0.8 })
-		new THREE.MeshPhysicalMaterial({ color: 0xffc0cb, transparent: true, opacity: 0.5 })
+		new THREE.MeshPhysicalMaterial({ color: 0xf0f0f0, transparent: true, opacity: 0.5 })
 	);
 	scene.add(outerSphere);
 
 	sphere.position.z = -150;
 	outerSphere.position.z = -150;
 
-	const light = new THREE.HemisphereLight(0xf9d6ff, 0x0033bb, 2.5);
+	const light = new THREE.HemisphereLight(0xf0f0f0, 0xf0f0f0, 2.5);
 	scene.add(light);
 
 	// ---------------------------------------------------------------------------
@@ -144,6 +145,14 @@
 		sperm.position.z += 4;
 
 		sperm.scale.set(0.2, 0.4, 0.2);
+
+		sperm.traverse(function (child) {
+			if (child.material) {
+				child.material = new THREE.MeshToonMaterial({
+					color: 0x000000
+				});
+			}
+		});
 
 		spermGroup.add(sperm);
 	});
@@ -185,6 +194,8 @@
 	let iteration = 0;
 
 	let render = function () {
+		console.log(asciiRenderer);
+
 		renderer.render(scene, camera);
 		id = requestAnimationFrame(render);
 		// controls.update();
@@ -256,8 +267,8 @@
 			let width = window.innerWidth;
 			camera.aspect = width / height;
 			camera.updateProjectionMatrix();
-			// renderer.setSize(width, height);
-			asciiRenderer.setSize(width, height);
+			renderer.setSize(width, height);
+			// asciiRenderer.setSize(width, height);
 		},
 		false
 	);
