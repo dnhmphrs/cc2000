@@ -1,68 +1,126 @@
 <script>
-	import '../app.css';
+	import './styles.css';
+
+	import { browser } from '$app/environment';
+	import { page } from '$app/stores';
+	import { webVitals } from '$lib/vitals';
+
 	import { onMount } from 'svelte';
-	import { screenType, iframe } from '$lib/store/store';
+	import { screenType, isIframe, screenSize } from '$lib/store/store';
+	import { getDeviceType, getScreenSize } from '$lib/functions/utils';
 
+	import Header from '$lib/components/header/header.svelte';
+	import Footer from '$lib/components/footer/footer.svelte';
+
+	export let data;
 	let Geometry;
-	onMount(async () => {
-		// ---------------------------------------------------------------------------
-		// HEIGHT
-		// ---------------------------------------------------------------------------
 
-		// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
-		let vh = window.innerHeight * 0.01;
-		// Then we set the value in the --vh custom property to the root of the document
-		document.documentElement.style.setProperty('--vh', `${vh}px`);
-
-		window.addEventListener('resize', () => {
-			// We execute the same script as before
-			let vh = window.innerHeight * 0.01;
-			document.documentElement.style.setProperty('--vh', `${vh}px`);
+	$: if (browser && data?.analyticsId) {
+		webVitals({
+			path: $page.url.pathname,
+			params: $page.params,
+			analyticsId: data.analyticsId
 		});
+	}
 
-		const module = await import('./geometry.svelte');
+	function handleScreen() {
+		// screen size
+		screenSize.set(getScreenSize());
+
+		// device type
+		screenType.set(getDeviceType());
+		isIframe.set(window.location !== window.parent.location);
+	}
+
+	onMount(async () => {
+		// webgl
+		const module = await import('$lib/graphics/three.svelte');
 		Geometry = module.default;
 
-		// ---------------------------------------------------------------------------
-		// SCREEN
-		// ---------------------------------------------------------------------------
-		const ua = navigator.userAgent;
-		if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
-			// tablet
-			screenType.set(1);
-		} else if (
-			/Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
-				ua
-			)
-		) {
-			// phone
-			screenType.set(2);
-		} else {
-			//laptop
-			screenType.set(3);
-		}
+		handleScreen();
+		window.addEventListener('resize', () => handleScreen());
 
-		if (window.location !== window.parent.location) {
-			// The page is in an iframe
-			iframe.set(true);
-		}
+		// releasr opacity block once geometry is loaded
+		document.querySelector('main').style.opacity = 1;
+
+		return () => {
+			window.removeEventListener('resize', () => handleScreen());
+		};
 	});
 </script>
 
-<svelte:component this={Geometry} />
+<svelte:head>
+	<title>Conception Calculator 2000</title>
+	<meta name="description" content="Conceived by Science, Built by Magic." />
+	<meta name="keywords" content="conception, calculator, parents, truth, test results, sex?" />
+	<meta name="author" content="AUFBAU" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</svelte:head>
+
+{#if Geometry}
+	<svelte:component this={Geometry} />
+{:else}
+	<div class="loading">gestating...</div>
+{/if}
 
 <main>
-	<slot />
+	<header>
+		<Header />
+	</header>
+
+	<body>
+		<slot />
+	</body>
+
+	{#if $screenType == 3}
+		<footer>
+			<Footer />
+		</footer>
+	{/if}
 </main>
 
 <style>
 	main {
-		height: 100vh;
-		height: calc(var(--vh, 1vh) * 100);
-		width: 100%;
-
 		display: flex;
-		align-items: center;
-		justify-content: center;
+		flex-direction: column;
+		height: 100dvh;
+		max-height: 100vh;
+		background: none;
+		opacity: 0;
+		overflow: hidden;
+	}
+
+	header {
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 1;
+	}
+
+	footer {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+	}
+
+	body {
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
+		/* padding: calc(1 * var(--margin)); */
+		width: 100%;
+		height: 100%;
+		background: none;
+	}
+
+	.loading {
+		position: absolute;
+		font-style: italic;
+		font-family: serif;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		padding: 10px;
+		font-size: 12px;
 	}
 </style>
